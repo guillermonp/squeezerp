@@ -54,6 +54,13 @@ create_warehouses = """
                     UNIQUE(name, description, location) ON CONFLICT ROLLBACK)
                     """
 
+create_datatools_history = """
+                            CREATE TABLE DataUploaderHistory(
+
+                            )
+                            """
+
+
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # INSERT
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
