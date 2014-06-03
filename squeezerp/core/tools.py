@@ -16,13 +16,13 @@ def convert_date_db(date):
 
 
 def isint(s):
-        try:
-            a = float(s)
-            b = int(a)
-        except ValueError:
-            return False
-        else:
-            return a == b
+    try:
+        a = float(s)
+        b = int(a)
+    except ValueError:
+        return False
+    else:
+        return a == b
 
 
 def isfloat(s):
