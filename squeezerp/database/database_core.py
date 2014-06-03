@@ -53,8 +53,4 @@ class DatabaseOperations(Database):
 
     def insert_history_uploader(self, fields):
         query = database_queries.insert_datauploader
-<<<<<<< HEAD
         self._execute_query(query, fields)
-=======
-        self._execute_query(query, fields)
->>>>>>> 402047449534a57ddc2d83c512d8ed6b7a0c5b2f
