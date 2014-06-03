@@ -1,11 +1,8 @@
-"""
-Database - CORE:
-    - create tables
+"""Database - CORE"""
 
-"""
 import sqlite3
 from squeezerp import resources
-from . import database_queries
+from squeezerp.database import database_queries
 
 
 class Database:
@@ -24,7 +21,7 @@ class Database:
                 print "An error occurred:", e.args[0]
         else:
             try:
-                _cursor.execute(query, parameters=param)
+                _cursor.execute(query, param)
                 self._connection.commit()
             except sqlite3.Error as e:
                 self._connection.rollback()
@@ -37,7 +34,7 @@ class Database:
 
 class DatabaseOperations(Database):
     """
-    Database operations:
+    Database operations: relational database operations
         - CREATE (create new tables)
         - INSERT (adding rows to a table)
         - READ (SELECT) (reading data from a database)
@@ -54,7 +51,6 @@ class DatabaseOperations(Database):
         for table in tables:
             self._execute_query(table)
 
-    def insert_history_uploader(self, ws, f_name, f_size, i_type, has_e, records, errors, msg, start, end):
+    def insert_history_uploader(self, fields):
         query = database_queries.insert_datauploader
-        param = (ws, f_name, f_size, i_type, has_e, records, errors, msg, start, end)
-        self._execute_query(query, param)
+        self._execute_query(query, fields)

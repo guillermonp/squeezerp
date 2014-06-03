@@ -1,10 +1,5 @@
-"""
-SQL snippets needed to run all the available queries
-includes:
-    select
-    insert
-    update
-"""
+"""SQL queries to create, read, update and delete (CRUD)"""
+
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # CREATE TABLES
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -63,10 +58,10 @@ create_datatools_history = """
                             file_name TEXT NOT NULL,
                             file_size INTEGER NOT NULL,
                             file_format TEXT NOT NULL,
-                            records_found REAL NOT NULL,
                             has_error INTEGER NOT NULL,
+                            records_found REAL NOT NULL,
                             errors INTEGER NOT NULL,
-                            message TEXT NOT NULL,
+                            error_msg TEXT NOT NULL,
                             start TEXT NOT NULL,
                             end TEXT NOT NULL)
                             """
@@ -92,6 +87,6 @@ insert_warehouse = 'INSERT INTO Warehouses (name, description, location) VALUES 
 
 insert_datauploader = """
                         INSERT INTO DataUploaderHistory
-                        (sheet_name, file_name, file_size, file_format, records_found, has_error, errors, message,
+                        (sheet_name, file_name, file_size, file_format, has_error, records_found, errors, error_msg,
                         start, end) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                         """

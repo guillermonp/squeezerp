@@ -85,4 +85,11 @@ TABLE_HEADERS = {
     "VAT": ["name", "value", "equalisation_tax"],
     "PaymentMethods": ["description"],
     "Warehouses": ["name", "description", "location"]
-    }
+}
+
+ERROR_TYPES = {
+    "input": "errors in the input file",
+    "csv": "error reading csv file",
+    "xls": "error reading xls file",
+    "success": "successfully uploaded"
+}

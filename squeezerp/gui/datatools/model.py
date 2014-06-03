@@ -14,6 +14,8 @@ from PyQt4.QtGui import QPixmap
 from PyQt4.QtGui import QFileDialog
 
 from squeezerp import resources
+from squeezerp.core import tools
+from squeezerp.database.database_core import DatabaseOperations
 from squeezerp.gui import ui_styles, ui_tools, ui_strings
 from squeezerp.gui.datatools import app_data
 from squeezerp.gui.datatools.controller import ControllerDataTools
@@ -39,6 +41,7 @@ class ModelDataTools(ControllerDataTools):
         self._errors = None
         self._has_errors = None
         self.uploaded_errors = None
+        self._error_type = None
 
         self.add_combobox_values()
 
@@ -139,6 +142,7 @@ class ModelDataTools(ControllerDataTools):
         self.show_state(label=self.lbl_state_du, state="pause")
         self.progress_bar.setValue(0)
         self.state_button(False, self.btn_data_testing, self.btn_data_db)
+        self._error_type = "success"
 
         # tables
         ui_tools.remove_headers(self.tbl_errors)
@@ -195,6 +199,9 @@ class ModelDataTools(ControllerDataTools):
         self.txt_errors.setText(str(self.errors_count))
         self.txt_time.setText(str(round((finish - start), 3)))
 
+        # new entry in DataUploaderHistory
+        self.add_history(start, finish)
+
         # print results
         if data is not None and self._type == "csv":
             ui_tools.load_data_csv(self.tbl_uploaded_data, app_data.TABLE_HEADERS[self._sheet], data)
@@ -240,6 +247,7 @@ class ModelDataTools(ControllerDataTools):
                             self._data[self._headers[col]].append(row[col])
         except (KeyError, IndexError):
             self._errors = 1
+            self._error_type = "csv"
             self.uploaded_errors.add_error("error", "", "", app_data.ERROR_READ_CSV_MSG, "",
                                            app_data.ERROR_READ_CSV_CORRECT)
 
@@ -331,6 +339,7 @@ class ModelDataTools(ControllerDataTools):
 
     def _error_format_csv(self, col, pos, cell, cell_format):
         cell_format = app_data.DB_TYPES[cell_format]
+        self._error_type = "input"
         self.uploaded_errors.add_error("error", pos + 1, col + 1, app_data.ERROR_VAL_MSG,
                                        app_data.ERROR_VAL_VALUE.format(cell),
                                        app_data.ERROR_VAL_CORRECT.format(cell_format))
@@ -379,6 +388,7 @@ class ModelDataTools(ControllerDataTools):
                 self.uploaded_errors.add_error("error", "", "",
                                                app_data.ERROR_COLUMNS_MSG.format(cols, sheet, app_data.SHEETS[sheet]),
                                                "", "")
+                self._error_type = "xls"
                 self.progress_bar.setValue(100)
                 self._errors = 1
                 self._has_errors = 1
@@ -406,6 +416,7 @@ class ModelDataTools(ControllerDataTools):
             self._error_format_xls(pos, col, ws, app_data.FIELDS_TYPES[self._sheet][col])
 
     def _error_format_xls(self, pos, col, ws, db_type):
+        self._error_type = "input"
         self.uploaded_errors.add_error("error", pos + 1, col + 1, app_data.ERROR_VAL_MSG,
                                        app_data.ERROR_VAL_VALUE.format(ws.cell(pos, col).value),
                                        app_data.ERROR_VAL_CORRECT.format(app_data.DB_TYPES[db_type]))
@@ -458,6 +469,21 @@ class ModelDataTools(ControllerDataTools):
             return len(self._data.values()[0]), len(self._data)
         elif self._type is "xls":
             return self._data.shape
+
+    def add_history(self, start, end):
+        _sheet_name = self._sheet
+        _file_name = self._path
+        _file_size = tools.get_file_size(_file_name)
+        _format = self._type
+        _has_error = self._has_errors
+        _records = self.data_shape[0]
+        _errors = self._errors
+        _error_type = app_data.ERROR_TYPES[self._error_type]
+        _start = start
+        _end = end
+
+        fields = (_sheet_name, _file_name, _file_size, _format, _has_error, _records, _errors, _error_type, _start, _end)
+        DatabaseOperations().insert_history_uploader(fields)
 
 
 class UploadErrors:

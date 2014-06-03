@@ -1,4 +1,3 @@
-
 """UI strings"""
 # -*- coding: utf-8 -*-
 
