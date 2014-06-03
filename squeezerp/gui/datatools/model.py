@@ -2,11 +2,11 @@ import os
 import sys
 import csv
 import datetime
-import time
 from collections import OrderedDict
 
 import xlrd
 import numpy as np
+
 from PyQt4 import QtCore
 from PyQt4.QtGui import QApplication
 from PyQt4.QtGui import QMessageBox
@@ -150,7 +150,7 @@ class ModelDataTools(ControllerDataTools):
         ui_tools.remove_rows(self.tbl_errors)
         ui_tools.remove_rows(self.tbl_uploaded_data)
 
-        start = time.time()
+        start = datetime.datetime.now()
 
         # path
         if self.txt_file.text() == "":
@@ -173,7 +173,7 @@ class ModelDataTools(ControllerDataTools):
                 else:
                     data = self.import_csv(delimiter=delimiter, hd_option=False)
             elif self._type == "xls":
-                data = self.import_excel
+                data = self.import_excel()
             else:
                 self.show_error_message("input_error")
                 return 1
@@ -181,7 +181,7 @@ class ModelDataTools(ControllerDataTools):
             self.show_error_message("run_error")
             return 1
 
-        finish = time.time()
+        finish = datetime.datetime.now()
 
         # results:
         if self.error == 1:  # errors
@@ -197,7 +197,8 @@ class ModelDataTools(ControllerDataTools):
         # records and errors
         self.txt_records.setText(str(self.data_shape[0]))
         self.txt_errors.setText(str(self.errors_count))
-        self.txt_time.setText(str(round((finish - start), 3)))
+        elapsed_time = finish - start
+        self.txt_time.setText(str(round(divmod(elapsed_time.total_seconds(), 3600)[1], 3)))
 
         # new entry in DataUploaderHistory
         self.add_history(start, finish)
@@ -284,14 +285,14 @@ class ModelDataTools(ControllerDataTools):
                     # import_csv, imports data as strings.
                     # check if we can convert to numeric: Integer not null
                     for pos, cell in enumerate(_col):
-                        if self._isint(cell) is False:
+                        if tools.isint(cell) is False:
                             if self._error_format_csv(col, pos, cell, 2) == 1:
                                 return 1
 
                 if 3 == column_types[col]:
                     # check if we can convert to numeric: Real not null
                     for pos, cell in enumerate(_col):
-                        if self._isfloat(cell) is False:
+                        if tools.isfloat(cell) is False:
                             if self._error_format_csv(col, pos, cell, 3) == 1:
                                 return 1
 
@@ -299,7 +300,7 @@ class ModelDataTools(ControllerDataTools):
                     # check different date formats
                     # create documentation about supported formats
                     for pos, cell in enumerate(_col):
-                        if self._isdate(cell) is False:
+                        if tools.isdate(cell) is False:
                             if self._error_format_csv(col, pos, cell, 4) == 1:
                                 return 1
 
@@ -307,31 +308,33 @@ class ModelDataTools(ControllerDataTools):
                     # Text | null
                     for pos, cell in enumerate(_col):
                         if bool(cell.strip()) is True and \
-                                (self._isdate(cell) or self._isint(cell) or self._isfloat(cell)):
+                                (tools.isdate(cell) or tools.isint(cell) or tools.isfloat(cell)):
                             if self._error_format_csv(col, pos, cell, 5) == 1:
                                 return 1
 
                 if 6 == column_types[col]:
                     # Integer | null
                     for pos, cell in enumerate(_col):
-                        if self._isint(cell) is False or bool(cell.strip()) is False:
+                        if tools.isint(cell) is False or bool(cell.strip()) is False:
                             if self._error_format_csv(col, pos, cell, 6) == 1:
                                 return 1
 
                 if 7 == column_types[col]:
                     # Real | null
                     for pos, cell in enumerate(_col):
-                        if self._isfloat(cell) is False or bool(cell.strip()) is False:
+                        if tools.isfloat(cell) is False or bool(cell.strip()) is False:
                             if self._error_format_csv(col, pos, cell, 7) == 1:
                                 return 1
 
                 if 8 == column_types[col]:
                     # Date | null
                     for pos, cell in enumerate(_col):
-                        if self._isdate(cell) is False or bool(cell.strip()) is False:
+                        if tools.isdate(cell) is False or bool(cell.strip()) is False:
                             if self._error_format_csv(col, pos, cell, 8) == 1:
                                 return 1
         else:
+            self._errors += 1
+            self._error_type = "csv"
             self.uploaded_errors.add_error("error", "", "",
                                            app_data.ERROR_COLUMNS_MSG.format(num_cols, sheet, app_data.SHEETS[sheet]),
                                            "", "")
@@ -347,7 +350,6 @@ class ModelDataTools(ControllerDataTools):
         if self._stop is True:
             return 1
 
-    @property
     def import_excel(self):
         """
         import_excel: Upload data from the selected worksheet.
@@ -399,7 +401,7 @@ class ModelDataTools(ControllerDataTools):
             if cell_type == 2:
                 # check integer:
                 if app_data.FIELDS_TYPES[self._sheet][col] == cell_type:
-                    if self._isint(ws.cell_value(pos, col)) is False:
+                    if tools.isint(ws.cell_value(pos, col)) is False:
                         self._error_format_xls(pos, col, ws, 2)
                     else:
                         self._data[pos - 1, col] = ws.cell_value(pos, col)
@@ -407,7 +409,7 @@ class ModelDataTools(ControllerDataTools):
             elif cell_type == 3:
                 cell = ws.cell_value(pos, col)
                 date_text = str(datetime.datetime(*xlrd.xldate_as_tuple(cell, self._workbook.datemode)))
-                if self._isdate(date_text):
+                if tools.isdate(date_text):
                     self._data[pos - 1, col] = date_text
             else:
                 self._data[pos - 1, col] = ws.cell_value(pos, col)
@@ -423,35 +425,6 @@ class ModelDataTools(ControllerDataTools):
         self._errors += 1
         if self._stop is True:
             self._stop_trigger = 1
-
-    @staticmethod
-    def _isint(s):
-        try:
-            a = float(s)
-            b = int(a)
-        except ValueError:
-            return False
-        else:
-            return a == b
-
-    @staticmethod
-    def _isfloat(s):
-        try:
-            float(s)
-        except ValueError:
-            return False
-        else:
-            return True
-
-    @staticmethod
-    def _isdate(s):
-        for date_format in app_data.DATE_FORMATS:
-            try:
-                datetime.datetime.strptime(s, date_format)
-                return True
-            except (ValueError, TypeError):
-                pass
-        return False
 
     @property
     def errors_count(self):
@@ -479,10 +452,11 @@ class ModelDataTools(ControllerDataTools):
         _records = self.data_shape[0]
         _errors = self._errors
         _error_type = app_data.ERROR_TYPES[self._error_type]
-        _start = start
-        _end = end
+        _start = tools.convert_date_db(str(start))
+        _end = tools.convert_date_db(str(end))
 
-        fields = (_sheet_name, _file_name, _file_size, _format, _has_error, _records, _errors, _error_type, _start, _end)
+        fields = (
+            _sheet_name, _file_name, _file_size, _format, _has_error, _records, _errors, _error_type, _start, _end)
         DatabaseOperations().insert_history_uploader(fields)
 
 
