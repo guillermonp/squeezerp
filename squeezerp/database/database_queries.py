@@ -11,7 +11,9 @@ includes:
 
 
 def create_tables():
-    return [create_categories, create_families, create_VAT, create_itemTypes, create_warehouses]
+    return [create_categories, create_families, create_VAT, create_itemTypes, create_warehouses,
+            create_datatools_history]
+
 
 create_categories = """
                     CREATE TABLE Categories(
@@ -56,8 +58,17 @@ create_warehouses = """
 
 create_datatools_history = """
                             CREATE TABLE DataUploaderHistory(
-
-                            )
+                            id INTEGER PRIMARY KEY NOT NULL,
+                            sheet_name TEXT NOT NULL,
+                            file_name TEXT NOT NULL,
+                            file_size INTEGER NOT NULL,
+                            file_format TEXT NOT NULL,
+                            records_found REAL NOT NULL,
+                            has_error INTEGER NOT NULL,
+                            errors INTEGER NOT NULL,
+                            message TEXT NOT NULL,
+                            start TEXT NOT NULL,
+                            end TEXT NOT NULL)
                             """
 
 
@@ -78,3 +89,9 @@ insert_items_type = """
                     """
 
 insert_warehouse = 'INSERT INTO Warehouses (name, description, location) VALUES (?, ?, ?);'
+
+insert_datauploader = """
+                        INSERT INTO DataUploaderHistory
+                        (sheet_name, file_name, file_size, file_format, records_found, has_error, errors, message,
+                        start, end) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                        """

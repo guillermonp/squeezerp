@@ -1,11 +1,10 @@
 from PyQt4 import QtCore
 
+from squeezerp.gui import ui_tools
 from squeezerp.gui.datatools.view import ViewDataTools
-from squeezerp.tools import ui_tools
 
 
 class ControllerDataTools(ViewDataTools):
-
     def __init__(self):
         ViewDataTools.__init__(self)
 

@@ -1,12 +1,12 @@
 import os
 import sys
 import csv
-import xlrd
 import datetime
 import time
-import numpy as np
 from collections import OrderedDict
 
+import xlrd
+import numpy as np
 from PyQt4 import QtCore
 from PyQt4.QtGui import QApplication
 from PyQt4.QtGui import QMessageBox
@@ -14,9 +14,7 @@ from PyQt4.QtGui import QPixmap
 from PyQt4.QtGui import QFileDialog
 
 from squeezerp import resources
-from squeezerp.gui import ui_styles
-from squeezerp.gui import ui_strings
-from squeezerp.tools import ui_tools
+from squeezerp.gui import ui_styles, ui_tools, ui_strings
 from squeezerp.gui.datatools import app_data
 from squeezerp.gui.datatools.controller import ControllerDataTools
 
@@ -134,7 +132,7 @@ class ModelDataTools(ControllerDataTools):
         self._has_errors = 0
         self._stop_trigger = 0
         self.tbl_errors.setStyleSheet("")
-        self.uploaded_errors = ui_tools.UploadErrors()
+        self.uploaded_errors = UploadErrors()
 
         # state
         self.clean_textbox(self.txt_records, self.txt_errors, self.txt_time)
@@ -460,6 +458,26 @@ class ModelDataTools(ControllerDataTools):
             return len(self._data.values()[0]), len(self._data)
         elif self._type is "xls":
             return self._data.shape
+
+
+class UploadErrors:
+    def __init__(self):
+        self.errors = []
+
+    def add_error(self, err_type, rw, cl, msg, err_value, err_correct):
+        _type = err_type
+        _row = str(rw)
+        _column = str(cl)
+        _message = msg
+        _err_value = str(err_value)
+        _correct = err_correct
+
+        error = [_type, _row, _column, _message, _err_value, _correct]
+        self.errors.append(error)
+
+    @property
+    def table(self):
+        return self.errors
 
 
 if __name__ == "__main__":

@@ -80,9 +80,9 @@ FIELDS_TYPES_XLS = {
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 TABLE_HEADERS = {
-    "Categories": ["Category_Id", "Category_Name", "Description"],
-    "Families": ["Family_Id", "Family_Name", "Category_Id", "Description"],
-    "VAT": ["Name", "Value", "EqualisationTax"],
-    "PaymentMethods": ["Payment_Description"],
-    "Warehouses": ["Name", "Description", "Location"]
+    "Categories": ["id", "name", "description"],
+    "Families": ["id", "name", "category_id", "description"],
+    "VAT": ["name", "value", "equalisation_tax"],
+    "PaymentMethods": ["description"],
+    "Warehouses": ["name", "description", "location"]
     }

@@ -1,9 +1,6 @@
-from squeezerp.data_warehouse.database_core import Database
-from squeezerp.data_warehouse import database_queries
+from squeezerp.database.database_core import DatabaseOperations
+from squeezerp.database import database_queries
 
-db = Database()
-
-for table in database_queries.create_tables():
-    db.create_table(table)
-
+db = DatabaseOperations()
+db.create_all_tables(database_queries.create_tables())
 db.close()

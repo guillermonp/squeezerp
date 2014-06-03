@@ -24,7 +24,6 @@ from PyQt4.QtGui import QApplication
 
 
 class ViewDataTools(QMainWindow):
-
     def __init__(self, parent=None):
         super(ViewDataTools, self).__init__(parent)
 

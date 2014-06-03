@@ -14,33 +14,11 @@ from PyQt4.QtCore import Qt
 
 
 class WorkerThread(QThread):
-
     def __init__(self):
         super(WorkerThread, self).__init__()
 
     def run(self):
         time.sleep(3)
-
-
-class UploadErrors:
-
-    def __init__(self):
-        self.errors = []
-
-    def add_error(self, err_type, rw, cl, msg, err_value, err_correct):
-        _type = err_type
-        _row = str(rw)
-        _column = str(cl)
-        _message = msg
-        _err_value = str(err_value)
-        _correct = err_correct
-
-        error = [_type, _row, _column, _message, _err_value, _correct]
-        self.errors.append(error)
-
-    @property
-    def table(self):
-        return self.errors
 
 
 def load_data(table, headers, data):
