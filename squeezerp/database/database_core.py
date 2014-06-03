@@ -1,7 +1,5 @@
 """
 Database - CORE:
-    - create tables
-
 """
 import sqlite3
 from squeezerp import resources
