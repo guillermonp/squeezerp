@@ -41,7 +41,7 @@ class ModelDataTools(ControllerDataTools):
         self._errors = None
         self._has_errors = None
         self.uploaded_errors = None
-        self._error_type = None
+        self._status = None
 
         self.add_combobox_values()
 
@@ -142,7 +142,7 @@ class ModelDataTools(ControllerDataTools):
         self.show_state(label=self.lbl_state_du, state="pause")
         self.progress_bar.setValue(0)
         self.state_button(False, self.btn_data_testing, self.btn_data_db)
-        self._error_type = "success"
+        self._status = 0
 
         # tables
         ui_tools.remove_headers(self.tbl_errors)
@@ -248,7 +248,7 @@ class ModelDataTools(ControllerDataTools):
                             self._data[self._headers[col]].append(row[col])
         except (KeyError, IndexError):
             self._errors = 1
-            self._error_type = "csv"
+            self._status = 1
             self.uploaded_errors.add_error("error", "", "", app_data.ERROR_READ_CSV_MSG, "",
                                            app_data.ERROR_READ_CSV_CORRECT)
 
@@ -334,7 +334,7 @@ class ModelDataTools(ControllerDataTools):
                                 return 1
         else:
             self._errors += 1
-            self._error_type = "csv"
+            self._status = 2
             self.uploaded_errors.add_error("error", "", "",
                                            app_data.ERROR_COLUMNS_MSG.format(num_cols, sheet, app_data.SHEETS[sheet]),
                                            "", "")
@@ -342,7 +342,7 @@ class ModelDataTools(ControllerDataTools):
 
     def _error_format_csv(self, col, pos, cell, cell_format):
         cell_format = app_data.DB_TYPES[cell_format]
-        self._error_type = "input"
+        self._status = 3
         self.uploaded_errors.add_error("error", pos + 1, col + 1, app_data.ERROR_VAL_MSG,
                                        app_data.ERROR_VAL_VALUE.format(cell),
                                        app_data.ERROR_VAL_CORRECT.format(cell_format))
@@ -390,7 +390,7 @@ class ModelDataTools(ControllerDataTools):
                 self.uploaded_errors.add_error("error", "", "",
                                                app_data.ERROR_COLUMNS_MSG.format(cols, sheet, app_data.SHEETS[sheet]),
                                                "", "")
-                self._error_type = "xls"
+                self._status = 2
                 self.progress_bar.setValue(100)
                 self._errors = 1
                 self._has_errors = 1
@@ -418,7 +418,7 @@ class ModelDataTools(ControllerDataTools):
             self._error_format_xls(pos, col, ws, app_data.FIELDS_TYPES[self._sheet][col])
 
     def _error_format_xls(self, pos, col, ws, db_type):
-        self._error_type = "input"
+        self._status = 3
         self.uploaded_errors.add_error("error", pos + 1, col + 1, app_data.ERROR_VAL_MSG,
                                        app_data.ERROR_VAL_VALUE.format(ws.cell(pos, col).value),
                                        app_data.ERROR_VAL_CORRECT.format(app_data.DB_TYPES[db_type]))
@@ -447,16 +447,16 @@ class ModelDataTools(ControllerDataTools):
         _sheet_name = self._sheet
         _file_name = self._path
         _file_size = tools.get_file_size(_file_name)
-        _format = self._type
+        _format = (0 if self._type == "csv" else 1)
         _has_error = self._has_errors
         _records = self.data_shape[0]
         _errors = self._errors
-        _error_type = app_data.ERROR_TYPES[self._error_type]
+        _status = self._status
         _start = tools.convert_date_db(str(start))
         _end = tools.convert_date_db(str(end))
 
         fields = (
-            _sheet_name, _file_name, _file_size, _format, _has_error, _records, _errors, _error_type, _start, _end)
+            _sheet_name, _file_name, _file_size, _format, _has_error, _records, _errors, _status, _start, _end)
         DatabaseOperations().insert_history_uploader(fields)
 
 
