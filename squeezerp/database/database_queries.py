@@ -118,3 +118,29 @@ insert_datauploader = """
                         (sheet_name, file_name, file_size, file_format, has_error, records_found, errors, status,
                         start, end) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                         """
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# READ
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+select_datauploader_history = """
+                            SELECT
+                                du.id,
+                                du.sheet_name AS [uploaded sheet],
+                                du.file_name AS [file],
+                                du.file_size AS [file size(kB)],
+                                duf.input_format AS [file type],
+                                du.has_error AS [has error],
+                                du.records_found AS [records],
+                                du.errors AS [#errors],
+                                dus.status_msg AS [status],
+                                du.start,
+                                du.end
+                            FROM DataUploaderHistory du
+                                INNER JOIN DataUploaderHistoryStatus dus
+                                ON du.status = dus.id
+                                INNER JOIN DataUploaderHistoryFormats duf
+                                ON du.file_format = duf.id
+                            ORDER BY
+                                du.id ASC
+                            """
