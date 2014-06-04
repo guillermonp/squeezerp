@@ -8,28 +8,28 @@ from squeezerp.database import database_queries
 class Database(object):
     def __init__(self):
         self.db_name = resources.DATABASE
-        self._connection = sqlite3.connect(self.db_name)
+        self.connection = sqlite3.connect(self.db_name)
 
     def _execute_query(self, query, param=None):
-        _cursor = self._connection.cursor()
+        _cursor = self.connection.cursor()
         if param is None:
             try:
                 _cursor.execute(query)
-                self._connection.commit()
+                self.connection.commit()
             except sqlite3.Error as e:
-                self._connection.rollback()
+                self.connection.rollback()
                 print "An error occurred:", e.args[0]
         else:
             try:
                 _cursor.execute(query, param)
-                self._connection.commit()
+                self.connection.commit()
             except sqlite3.Error as e:
-                self._connection.rollback()
+                self.connection.rollback()
                 print "An error occurred:", e.args[0]
 
     def close(self):
-        if self._connection:
-            self._connection.close()
+        if self.connection:
+            self.connection.close()
 
 
 class DatabaseOperations(Database):
@@ -42,17 +42,29 @@ class DatabaseOperations(Database):
         - DELETE (deleting rows from a table)
     """
     def __init__(self):
-        super(Database, self).__init__()
+        super(DatabaseOperations, self).__init__()
 
-    def sql(self, query):
+    def sql(self, query, *snippets):
         """
         Run custom queries:
             db = DatabaseOperations()
             db.sql("select * from table")
             db.sql("select * from {0}".format(table))
             ...
+        Add sql snippets:
+            " where ..."
+            " order by ..."
+            " group by ..."
+            " having ..."
+
+            db.sql("select * from table", " where field1 = '2'", " order by field1 desc")
+            db.sql("select * from table" , where_option1, group_option2, order_option1)
         """
-        self._execute_query(query)
+
+        snippet = ''.join(snippets)
+        sql_query = query + snippet
+
+        self._execute_query(sql_query)
 
     def create_table(self, query):
         """" create a new table """
