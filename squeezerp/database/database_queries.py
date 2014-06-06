@@ -51,7 +51,7 @@ create_warehouses = """
 
 create_datatools_history = """
                     CREATE TABLE DataUploaderHistory(
-                    id INTEGER PRIMARY KEY NOT NULL,
+                    id INTEGER PRIMARY KEY ASC NOT NULL,
                     sheet_name TEXT NOT NULL,
                     file_name TEXT NOT NULL,
                     file_size INTEGER NOT NULL,
@@ -142,6 +142,13 @@ select_datauploader_history = """
                         ON du.status = dus.id
                         INNER JOIN DataUploaderHistoryFormats duf
                         ON du.file_format = duf.id
-                    ORDER BY
-                        du.id ASC
                     """
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# READ - SNIPPETS
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+snippet_du_history_period_today = " WHERE date(du.start) = BETWEEN date('now')"
+snippet_du_history_period_1week = " WHERE date(du.start) = BETWEEN date('now') AND date('now', '-7 day')"
+snippet_du_history_period_1month = " WHERE date(du.start) = BETWEEN date('now') AND date('now', '-1 month')"
+snippet_du_history_period_3month = " WHERE date(du.start) = BETWEEN date('now') AND date('now', '-3 month')"
