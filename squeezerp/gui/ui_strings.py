@@ -5,7 +5,7 @@
 #APP MESSAGES
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 DATATOOLS_TITLE = "Squeezerp - DataTools"
-DATATOOLS_DESCRIPTION = "DataTools provides tools to upload your data from different sources."
+DATATOOLS_DESCRIPTION = "DataTools provides modules to upload your data from different sources."
 DATATOOLS_INPUT_TYPE = "select type:"
 DATATOOLS_GROUP_INPUT = "Input options"
 DATATOOLS_WITH_HEADERS = "CSV with headers"
@@ -27,3 +27,5 @@ DATATOOLS_HISTORY = "View history"
 DATATOOLS_SELECT_RUN_OPTION = "Select a run option."
 DATATOOLS_SELECT_INPUT_TYPE = "Select an input type."
 DATATOOLS_MESSAGE_ERROR = "DataUploader - Error"
+
+DATATOOLS_HISTORY_TITLE = "Squeezerp - DataTools - History"

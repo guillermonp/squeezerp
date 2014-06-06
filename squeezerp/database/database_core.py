@@ -69,7 +69,11 @@ class DatabaseOperations(Database):
         self._execute_query(sql_query)
 
     def sql_script(self, script_path):
-        """ Execute a sql_script (e.g. script.sql) """
+        """
+        Execute a sql_script (e.g. script.sql)
+            The main purpose is create schema from .sql files.
+            it might substitute create_all_tables()
+        """
         script = open(script_path, 'r').read()
         self.db_conn.executescript(script)
 
@@ -86,7 +90,7 @@ class DatabaseOperations(Database):
         for table in tables:
             self._execute_query(table)
 
-    def insert_initial_tables(self, operations):
+    def insert_initial_data(self, operations):
         """
         insert values to some fixed tables:
             ItemTypes

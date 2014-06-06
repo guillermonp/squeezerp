@@ -451,12 +451,12 @@ class ModelDataTools(ControllerDataTools):
         _has_error = self._has_errors
         _records = self.data_shape[0]
         _errors = self._errors
-        _status = self._status
+        _error_type = self._status
         _start = tools.convert_date_db(str(start))
         _end = tools.convert_date_db(str(end))
 
         fields = (
-            _sheet_name, _file_name, _file_size, _format, _has_error, _records, _errors, _status, _start, _end)
+            _sheet_name, _file_name, _file_size, _format, _has_error, _records, _errors, _error_type, _start, _end)
         DatabaseOperations().insert_history_uploader(fields)
 
 

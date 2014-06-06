@@ -4,6 +4,7 @@ core operations
 
 import os
 import datetime
+
 from squeezerp.database.database_data import DATE_FORMATS
 
 

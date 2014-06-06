@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="61130018-a45a-4b66-b9ce-579bfda3975b" name="Default" comment="database operations change">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/squeezerp/database/database_data.py" />
+    <list default="true" id="61130018-a45a-4b66-b9ce-579bfda3975b" name="Default" comment="self._">
+      <change type="DELETED" beforePath="C:\Users\Guillermo Navas\Documents\GitHub\Squeezerp\squeezerp\tools\__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Guillermo Navas\Documents\GitHub\Squeezerp\squeezerp\tools\charts\__init__.py" afterPath="" />
+      <change type="MOVED" beforePath="C:\Users\Guillermo Navas\Documents\GitHub\Squeezerp\squeezerp\tools\__init__.py" afterPath="$PROJECT_DIR$/squeezerp/modules/__init__.py" />
+      <change type="MOVED" beforePath="C:\Users\Guillermo Navas\Documents\GitHub\Squeezerp\squeezerp\tools\charts\__init__.py" afterPath="$PROJECT_DIR$/squeezerp/modules/charts/__init__.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/squeezerp/resources/database.db" afterPath="$PROJECT_DIR$/squeezerp/resources/database.db" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/squeezerp/gui/datatools/app_data.py" afterPath="$PROJECT_DIR$/squeezerp/gui/datatools/app_data.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/datatools_tests.py" afterPath="$PROJECT_DIR$/tests/datatools_tests.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/Squeezerp.iml" afterPath="$PROJECT_DIR$/.idea/Squeezerp.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/squeezerp/database/database_core.py" afterPath="$PROJECT_DIR$/squeezerp/database/database_core.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/database_tests.py" afterPath="$PROJECT_DIR$/tests/database_tests.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/squeezerp/gui/datatools/model.py" afterPath="$PROJECT_DIR$/squeezerp/gui/datatools/model.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/squeezerp/core/tools.py" afterPath="$PROJECT_DIR$/squeezerp/core/tools.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/squeezerp/gui/ui_strings.py" afterPath="$PROJECT_DIR$/squeezerp/gui/ui_strings.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/squeezerp/gui/dialogs/datatools_history/view.py" afterPath="$PROJECT_DIR$/squeezerp/gui/dialogs/datatools_history/view.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="d6319490-5bbb-48c4-9e07-e1e2bbe8e609" name="Failed commit: Default" comment="test" />
@@ -32,40 +40,33 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="model.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/squeezerp/gui/datatools/model.py">
+      <file leaf-file-name="database_core.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/squeezerp/database/database_core.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="35" selection-start="282" selection-end="282" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="8364">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tools.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/squeezerp/core/tools.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="0" selection-start="279" selection-end="279" vertical-scroll-proportion="0.0" vertical-offset="50" max-vertical-offset="833">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2703">
               <folding>
-                <element signature="e#25#34#0" expanded="true" />
+                <element signature="e#23#37#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="database_data.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/squeezerp/database/database_data.py">
+      <file leaf-file-name="database_queries.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/squeezerp/database/database_queries.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="15" selection-start="67" selection-end="67" vertical-scroll-proportion="0.10625" vertical-offset="0" max-vertical-offset="480">
+            <state line="8" column="81" selection-start="347" selection-end="347" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2703">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app_data.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/squeezerp/gui/datatools/app_data.py">
+      <file leaf-file-name="database_tests.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/tests/database_tests.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="28" selection-start="243" selection-end="243" vertical-scroll-proportion="0.0" vertical-offset="1135" max-vertical-offset="1615">
-              <folding />
+            <state line="3" column="0" selection-start="144" selection-end="144" vertical-scroll-proportion="0.08471761" vertical-offset="0" max-vertical-offset="602">
+              <folding>
+                <element signature="e#0#63#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -92,9 +93,6 @@
         <option value="$PROJECT_DIR$/squeezerp/gui/dialogs/new_category/view.py" />
         <option value="$PROJECT_DIR$/squeezerp/gui/dialogs/new_category/app_data.py" />
         <option value="$PROJECT_DIR$/squeezerp/gui/dialogs/new_category/controller.py" />
-        <option value="$PROJECT_DIR$/squeezerp/gui/datatools/controller.py" />
-        <option value="$PROJECT_DIR$/squeezerp/gui/datatools/view.py" />
-        <option value="$PROJECT_DIR$/squeezerp/gui/dialogs/view_datatools_history/model.py" />
         <option value="$PROJECT_DIR$/squeezerp/gui/dialogs/view_datatools_history/controller.py" />
         <option value="$PROJECT_DIR$/squeezerp/gui/dialogs/view_datatools_history/app_data.py" />
         <option value="$PROJECT_DIR$/squeezerp/gui/dialogs/view_datatools_history/view.py" />
@@ -103,15 +101,25 @@
         <option value="$PROJECT_DIR$/squeezerp/gui/ui_tools.py" />
         <option value="$PROJECT_DIR$/squeezerp/tools/tools.py" />
         <option value="$PROJECT_DIR$/squeezerp/data_warehouse/database_core.py" />
+        <option value="$PROJECT_DIR$/squeezerp/database/database_data.py" />
+        <option value="$PROJECT_DIR$/tests/datatools_tests.py" />
+        <option value="$PROJECT_DIR$/squeezerp/gui/datatools/app_data.py" />
+        <option value="$PROJECT_DIR$/squeezerp/core/tools.py" />
+        <option value="$PROJECT_DIR$/squeezerp/gui/dialogs/view_datatools_history/model.py" />
         <option value="$PROJECT_DIR$/squeezerp/gui/ui_strings.py" />
+        <option value="$PROJECT_DIR$/squeezerp/gui/datatools/view.py" />
+        <option value="$PROJECT_DIR$/squeezerp/gui/datatools/controller.py" />
+        <option value="$PROJECT_DIR$/squeezerp/gui/dialogs/datatools_history/view.py" />
+        <option value="$PROJECT_DIR$/squeezerp/gui/datatools/model.py" />
+        <option value="$USER_HOME$/Desktop/ComputSimu/Financial Engineering/BinomialMethods.py" />
+        <option value="$USER_HOME$/Desktop/ComputSimu/Financial Engineering/setup.py" />
+        <option value="$USER_HOME$/Desktop/ComputSimu/Financial Engineering/tests/binomial_test.py" />
+        <option value="$USER_HOME$/Desktop/ComputSimu/Financial Engineering/Methods/binomial_method.py" />
+        <option value="$PROJECT_DIR$/squeezerp/resources.py" />
+        <option value="$PROJECT_DIR$/squeezerp/database/database_schema.sql" />
         <option value="$PROJECT_DIR$/squeezerp/database/database_queries.py" />
         <option value="$PROJECT_DIR$/tests/database_tests.py" />
         <option value="$PROJECT_DIR$/squeezerp/database/database_core.py" />
-        <option value="$PROJECT_DIR$/squeezerp/database/database_data.py" />
-        <option value="$PROJECT_DIR$/squeezerp/core/tools.py" />
-        <option value="$PROJECT_DIR$/tests/datatools_tests.py" />
-        <option value="$PROJECT_DIR$/squeezerp/gui/datatools/app_data.py" />
-        <option value="$PROJECT_DIR$/squeezerp/gui/datatools/model.py" />
       </list>
     </option>
   </component>
@@ -176,97 +184,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="tests" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Squeezerp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Squeezerp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="squeezerp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Squeezerp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Squeezerp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="squeezerp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Squeezerp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Squeezerp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="squeezerp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="datatools" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Squeezerp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Squeezerp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="squeezerp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="database" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Squeezerp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Squeezerp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="squeezerp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -275,8 +193,8 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="options.lastSelected" value="settings.github" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/ComputSimu/Finance" />
+    <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
@@ -311,25 +229,7 @@
       <recent name="C:\Users\Guillermo Navas\Documents\GitHub\Squeezerp\squeezerp\gui" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.model">
-    <configuration default="false" name="model" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/squeezerp/gui/datatools" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Squeezerp" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/squeezerp/gui/datatools/model.py" />
-      <option name="PARAMETERS" value="" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="Python.database_tests">
     <configuration default="false" name="database_tests" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -344,29 +244,13 @@
       <module name="Squeezerp" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/database_tests.py" />
       <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PyDebugRunner" />
       <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PyDebugRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
-    <configuration default="false" name="database_core" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/squeezerp/database" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Squeezerp" />
-      <option name="SCRIPT_NAME" value="C:\Users\Guillermo Navas\Documents\GitHub\Squeezerp\squeezerp\database\core.py" />
-      <option name="PARAMETERS" value="" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Unittest TestDataTools.test_data_uploader_csv" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="Unittests in DatabaseTest" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs />
@@ -376,11 +260,11 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="Squeezerp" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/datatools_tests.py" />
-      <option name="CLASS_NAME" value="TestDataTools" />
-      <option name="METHOD_NAME" value="test_data_uploader_csv" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/database_tests.py" />
+      <option name="CLASS_NAME" value="DatabaseTest" />
+      <option name="METHOD_NAME" value="" />
       <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_METHOD" />
+      <option name="TEST_TYPE" value="TEST_CLASS" />
       <option name="PATTERN" value="" />
       <option name="USE_PATTERN" value="false" />
       <option name="PUREUNITTEST" value="true" />
@@ -390,7 +274,7 @@
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
-    <configuration default="false" name="Unittest TestDataTools.test_data_uploader__excel" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="Unittests in DatabaseTest (1)" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs />
@@ -400,11 +284,59 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="Squeezerp" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/datatools_tests.py" />
-      <option name="CLASS_NAME" value="TestDataTools" />
-      <option name="METHOD_NAME" value="test_data_uploader__excel" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/database_tests.py" />
+      <option name="CLASS_NAME" value="DatabaseTest" />
+      <option name="METHOD_NAME" value="" />
       <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_METHOD" />
+      <option name="TEST_TYPE" value="TEST_CLASS" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <RunnerSettings RunnerId="PyDebugRunner" />
+      <ConfigurationWrapper RunnerId="PyDebugRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Unittests in DatabaseTest (2)" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Squeezerp" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/database_tests.py" />
+      <option name="CLASS_NAME" value="DatabaseTest" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_CLASS" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Unittests in DatabaseTest (3)" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Squeezerp" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/database_tests.py" />
+      <option name="CLASS_NAME" value="DatabaseTest" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_CLASS" />
       <option name="PATTERN" value="" />
       <option name="USE_PATTERN" value="false" />
       <option name="PUREUNITTEST" value="true" />
@@ -536,19 +468,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.model" />
-      <item index="1" class="java.lang.String" itemvalue="Python.database_tests" />
-      <item index="2" class="java.lang.String" itemvalue="Python.database_core" />
-      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittest TestDataTools.test_data_uploader_csv" />
-      <item index="4" class="java.lang.String" itemvalue="Python tests.Unittest TestDataTools.test_data_uploader__excel" />
+      <item index="0" class="java.lang.String" itemvalue="Python.database_tests" />
+      <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests in DatabaseTest" />
+      <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests in DatabaseTest (1)" />
+      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests in DatabaseTest (2)" />
+      <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests in DatabaseTest (3)" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.model" />
-        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittest TestDataTools.test_data_uploader__excel" />
-        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittest TestDataTools.test_data_uploader_csv" />
-        <item index="3" class="java.lang.String" itemvalue="Python.database_tests" />
-        <item index="4" class="java.lang.String" itemvalue="Python.database_core" />
+        <item index="0" class="java.lang.String" itemvalue="Python.database_tests" />
+        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests in DatabaseTest" />
+        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests in DatabaseTest (3)" />
+        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests in DatabaseTest (2)" />
+        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests in DatabaseTest (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -603,7 +535,63 @@
       <created>1401834267251</created>
       <updated>1401834267251</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="datatools - history fixed">
+      <created>1401834304959</created>
+      <updated>1401834304959</updated>
+    </task>
+    <task id="LOCAL-00013" summary="new functions - tools">
+      <created>1401834491213</created>
+      <updated>1401834491213</updated>
+    </task>
+    <task id="LOCAL-00014" summary="ERROR_TYPE removed">
+      <created>1401875608397</created>
+      <updated>1401875608397</updated>
+    </task>
+    <task id="LOCAL-00015" summary="new queries datauploader">
+      <created>1401881955814</created>
+      <updated>1401881955814</updated>
+    </task>
+    <task id="LOCAL-00016" summary="datauploader history sql report">
+      <created>1401899178810</created>
+      <updated>1401899178810</updated>
+    </task>
+    <task id="LOCAL-00017" summary="cast (file_size) datauploader history">
+      <created>1401900165228</created>
+      <updated>1401900165228</updated>
+    </task>
+    <task id="LOCAL-00018" summary="add_history method">
+      <created>1401900260930</created>
+      <updated>1401900260930</updated>
+    </task>
+    <task id="LOCAL-00019" summary="new insert_*">
+      <created>1401917721463</created>
+      <updated>1401917721463</updated>
+    </task>
+    <task id="LOCAL-00020" summary="db.sql() allows sql snippets">
+      <created>1401921601519</created>
+      <updated>1401921601519</updated>
+    </task>
+    <task id="LOCAL-00021" summary="sql_script">
+      <created>1402083723336</created>
+      <updated>1402083723336</updated>
+    </task>
+    <task id="LOCAL-00022" summary="datauploaderhistory sql snippets">
+      <created>1402083953657</created>
+      <updated>1402083953657</updated>
+    </task>
+    <task id="LOCAL-00023" summary="database_schema.sql added">
+      <created>1402090588730</created>
+      <updated>1402090588730</updated>
+    </task>
+    <task id="LOCAL-00024" summary="database schema - create initial tables">
+      <created>1402090755537</created>
+      <updated>1402090755537</updated>
+    </task>
+    <task id="LOCAL-00025" summary="new test">
+      <created>1402091849349</created>
+      <updated>1402091849349</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -611,16 +599,16 @@
     <editor active="false" />
     <layout>
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32961783" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19426751" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19267516" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32961783" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24981412" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24981412" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39968154" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31369427" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29299363" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32643312" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -631,12 +619,12 @@
     </layout>
     <layout-to-restore>
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19426751" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19267516" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32961783" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39968154" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32643312" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -645,9 +633,9 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24981412" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29299363" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31369427" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -662,9 +650,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="new category dialog (form) added" />
-    <MESSAGE value="screenshots added" />
-    <MESSAGE value="database operations" />
     <MESSAGE value="database core&#10;added functionality - datauploader history" />
     <MESSAGE value="database core&#10;new functionality - datauploader history&#10;" />
     <MESSAGE value="new functionality - datauploader history" />
@@ -676,149 +661,165 @@
     <MESSAGE value="core operations" />
     <MESSAGE value="database operations change" />
     <MESSAGE value="new functions" />
-    <option name="LAST_COMMIT_MESSAGE" value="new functions" />
+    <MESSAGE value="datatools - history fixed" />
+    <MESSAGE value="new functions - tools" />
+    <MESSAGE value="ERROR_TYPE removed" />
+    <MESSAGE value="new queries datauploader" />
+    <MESSAGE value="datauploader history sql report" />
+    <MESSAGE value="cast (file_size) datauploader history" />
+    <MESSAGE value="add_history method" />
+    <MESSAGE value="new insert_*" />
+    <MESSAGE value="db.sql() allows sql snippets" />
+    <MESSAGE value="sql_script" />
+    <MESSAGE value="datauploaderhistory sql snippets" />
+    <MESSAGE value="database_schema.sql added" />
+    <MESSAGE value="database schema - create initial tables" />
+    <MESSAGE value="new test" />
+    <option name="LAST_COMMIT_MESSAGE" value="new test" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="3" />
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/squeezerp/database/database_queries.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="89" column="83" selection-start="3538" selection-end="3538" vertical-scroll-proportion="0.0" vertical-offset="1047" max-vertical-offset="1649">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/squeezerp/gui/datatools/model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="44" selection-start="526" selection-end="526" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="8806">
-          <folding />
-        </state>
+        <state line="13" column="35" selection-start="282" selection-end="282" vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="8364" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/squeezerp/core/tools.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="19" selection-start="536" selection-end="536" vertical-scroll-proportion="0.0" vertical-offset="297" max-vertical-offset="833" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/squeezerp/database/database_core.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1054">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/squeezerp/core/tools.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="8" selection-start="145" selection-end="145" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="306">
           <folding>
-            <element signature="e#25#34#0" expanded="true" />
+            <element signature="e#23#37#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/squeezerp/gui/datatools/app_data.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="0" selection-start="322" selection-end="322" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="1700">
-          <folding />
+        <state line="8" column="28" selection-start="243" selection-end="243" vertical-scroll-proportion="0.0" vertical-offset="1135" max-vertical-offset="1615" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/squeezerp/database/database_queries.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="89" column="83" selection-start="3538" selection-end="3538" vertical-scroll-proportion="0.0" vertical-offset="1047" max-vertical-offset="1649" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/squeezerp/gui/datatools/model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="44" selection-start="526" selection-end="526" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="8806" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/squeezerp/database/database_core.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1054">
+          <folding>
+            <element signature="e#23#37#0" expanded="true" />
+          </folding>
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/squeezerp/core/tools.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="8" selection-start="145" selection-end="145" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="306" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/squeezerp/gui/datatools/app_data.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="0" selection-start="322" selection-end="322" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="1700" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/database_tests.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="10" selection-start="204" selection-end="204" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="187">
-          <folding />
+          <folding>
+            <element signature="e#0#63#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/squeezerp/database/database_queries.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="89" column="83" selection-start="3538" selection-end="3538" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1649">
-          <folding />
-        </state>
+        <state line="89" column="83" selection-start="3538" selection-end="3538" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1649" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/squeezerp/gui/datatools/model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="44" selection-start="526" selection-end="526" vertical-scroll-proportion="0.0" vertical-offset="20" max-vertical-offset="8806">
-          <folding />
-        </state>
+        <state line="19" column="44" selection-start="526" selection-end="526" vertical-scroll-proportion="0.0" vertical-offset="20" max-vertical-offset="8806" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/squeezerp/database/database_core.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1037">
-          <folding />
+          <folding>
+            <element signature="e#23#37#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/squeezerp/core/tools.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="0" selection-start="147" selection-end="147" vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="374">
-          <folding>
-            <element signature="e#25#34#0" expanded="true" />
-          </folding>
-        </state>
+        <state line="14" column="0" selection-start="147" selection-end="147" vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="374" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/squeezerp/gui/datatools/app_data.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="0" selection-start="322" selection-end="322" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="1700">
-          <folding />
-        </state>
+        <state line="12" column="0" selection-start="322" selection-end="322" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="1700" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/database_tests.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="10" selection-start="204" selection-end="204" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="187">
-          <folding />
+          <folding>
+            <element signature="e#0#63#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/squeezerp/database/database_queries.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="89" column="83" selection-start="3538" selection-end="3538" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1649">
-          <folding />
-        </state>
+        <state line="89" column="83" selection-start="3538" selection-end="3538" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1649" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/squeezerp/gui/datatools/model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="488" column="19" selection-start="18349" selection-end="18349" vertical-scroll-proportion="0.0" vertical-offset="8119" max-vertical-offset="8806">
-          <folding />
-        </state>
+        <state line="488" column="19" selection-start="18349" selection-end="18349" vertical-scroll-proportion="0.0" vertical-offset="8119" max-vertical-offset="8806" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/squeezerp/core/tools.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="0" selection-start="137" selection-end="137" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="306">
-          <folding>
-            <element signature="e#25#34#0" expanded="true" />
-          </folding>
-        </state>
+        <state line="12" column="0" selection-start="137" selection-end="137" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="306" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/squeezerp/gui/datatools/app_data.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="70" column="20" selection-start="2156" selection-end="2156" vertical-scroll-proportion="0.0" vertical-offset="1098" max-vertical-offset="1700">
-          <folding />
-        </state>
+        <state line="70" column="20" selection-start="2156" selection-end="2156" vertical-scroll-proportion="0.0" vertical-offset="1098" max-vertical-offset="1700" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/database_tests.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="4" column="47" selection-start="186" selection-end="186" vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="187">
-          <folding />
+          <folding>
+            <element signature="e#0#63#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/squeezerp/database/database_queries.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="92" column="25" selection-start="3439" selection-end="3439" vertical-scroll-proportion="0.0" vertical-offset="9" max-vertical-offset="1734">
-          <folding />
-        </state>
+        <state line="92" column="25" selection-start="3439" selection-end="3439" vertical-scroll-proportion="0.0" vertical-offset="9" max-vertical-offset="1734" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/squeezerp/gui/datatools/model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="84" column="25" selection-start="2292" selection-end="2292" vertical-scroll-proportion="0.0" vertical-offset="340" max-vertical-offset="8279">
-          <folding />
-        </state>
+        <state line="84" column="25" selection-start="2292" selection-end="2292" vertical-scroll-proportion="0.0" vertical-offset="340" max-vertical-offset="8279" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/squeezerp/gui/ui_tools.py">
@@ -829,7 +830,9 @@
     <entry file="file://$PROJECT_DIR$/tests/database_tests.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="3" column="10" selection-start="125" selection-end="125" vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="187">
-          <folding />
+          <folding>
+            <element signature="e#0#63#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -853,24 +856,14 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="119" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/squeezerp/gui/dialogs/view_datatools_history/controller.py">
+    <entry file="file://$PROJECT_DIR$/squeezerp/gui/dialogs/datatools_history/controller.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="476" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/squeezerp/gui/dialogs/view_datatools_history/model.py">
+    <entry file="file://$PROJECT_DIR$/squeezerp/gui/dialogs/datatools_history/app_data.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="497" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/squeezerp/gui/dialogs/view_datatools_history/app_data.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="497" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/squeezerp/gui/dialogs/view_datatools_history/view.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="476" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/squeezerp/gui/ui_tools.py">
@@ -878,97 +871,125 @@
         <state line="79" column="0" selection-start="1842" selection-end="1842" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1530" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/squeezerp/gui/datatools/view.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="33" selection-start="726" selection-end="726" vertical-scroll-proportion="0.087478556" vertical-offset="0" max-vertical-offset="4318" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/squeezerp/gui/datatools/controller.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="41" selection-start="159" selection-end="159" vertical-scroll-proportion="0.08443709" vertical-offset="0" max-vertical-offset="604" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/squeezerp/gui/ui_strings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="48" selection-start="1214" selection-end="1214" vertical-scroll-proportion="0.7906977" vertical-offset="0" max-vertical-offset="602" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/squeezerp/resources.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="602" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1020">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1020" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/squeezerp/database/database_data.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="15" selection-start="67" selection-end="67" vertical-scroll-proportion="0.10625" vertical-offset="0" max-vertical-offset="480" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/squeezerp/gui/datatools/app_data.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="18" selection-start="294" selection-end="294" vertical-scroll-proportion="0.31063122" vertical-offset="0" max-vertical-offset="1496" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/squeezerp/gui/dialogs/datatools_history/model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="500" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="602">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="602" />
+      </provider>
+      <provider editor-type-id="MarkdownPreviewEditor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/squeezerp/gui/datatools/controller.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="8" selection-start="192" selection-end="192" vertical-scroll-proportion="0.272" vertical-offset="0" max-vertical-offset="500" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/squeezerp/gui/ui_strings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="39" selection-start="1255" selection-end="1255" vertical-scroll-proportion="1.0741627" vertical-offset="61" max-vertical-offset="629" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/squeezerp/core/tools.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="0" selection-start="20" selection-end="20" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="850" />
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/ComputSimu/Financial Engineering/tests/binomial_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="21" selection-start="228" selection-end="228" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="272" />
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/ComputSimu/Financial Engineering/Methods/binomial_method.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="19" selection-start="208" selection-end="208" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="561" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/squeezerp/gui/datatools/model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="441" column="41" selection-start="17094" selection-end="17094" vertical-scroll-proportion="0.41196012" vertical-offset="6909" max-vertical-offset="8024">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/squeezerp/database/database_core.py">
+    <entry file="file://$PROJECT_DIR$/squeezerp/gui/dialogs/datatools_history/view.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1020">
+        <state line="37" column="9" selection-start="1380" selection-end="1380" vertical-scroll-proportion="0.717608" vertical-offset="27" max-vertical-offset="697">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/squeezerp/database/database_queries.py">
+    <entry file="file://$PROJECT_DIR$/squeezerp/gui/datatools/view.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="89" column="83" selection-start="3538" selection-end="3538" vertical-scroll-proportion="1.1506172" vertical-offset="1047" max-vertical-offset="1649">
+        <state line="64" column="55" selection-start="2597" selection-end="2597" vertical-scroll-proportion="0.63787377" vertical-offset="704" max-vertical-offset="4692">
+          <folding>
+            <element signature="e#0#24#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/squeezerp/resources.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="37" selection-start="476" selection-end="476" vertical-scroll-proportion="0.52870816" vertical-offset="0" max-vertical-offset="561">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/datatools_tests.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="14" selection-start="1354" selection-end="1388" vertical-scroll-proportion="0.575" vertical-offset="455" max-vertical-offset="935">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="20" max-vertical-offset="850">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/squeezerp/database/database_schema.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="47" selection-start="328" selection-end="328" vertical-scroll-proportion="0.3660287" vertical-offset="0" max-vertical-offset="1564">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/squeezerp/database/database_core.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2703">
           <folding>
-            <element signature="e#0#15#0" expanded="true" />
+            <element signature="e#23#37#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/squeezerp/database/database_queries.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="81" selection-start="347" selection-end="347" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2703">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/database_tests.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="10" selection-start="204" selection-end="204" vertical-scroll-proportion="0.14166667" vertical-offset="0" max-vertical-offset="480">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/squeezerp/gui/datatools/app_data.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="28" selection-start="243" selection-end="243" vertical-scroll-proportion="0.0" vertical-offset="1135" max-vertical-offset="1615">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/squeezerp/gui/datatools/model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="35" selection-start="282" selection-end="282" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="8364">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/squeezerp/core/tools.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="0" selection-start="279" selection-end="279" vertical-scroll-proportion="0.0" vertical-offset="50" max-vertical-offset="833">
+        <state line="3" column="0" selection-start="144" selection-end="144" vertical-scroll-proportion="0.08471761" vertical-offset="0" max-vertical-offset="602">
           <folding>
-            <element signature="e#25#34#0" expanded="true" />
+            <element signature="e#0#63#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/squeezerp/database/database_data.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="15" selection-start="67" selection-end="67" vertical-scroll-proportion="0.10625" vertical-offset="0" max-vertical-offset="480">
-          <folding />
         </state>
       </provider>
     </entry>
