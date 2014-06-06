@@ -12,6 +12,7 @@ PRJ_PATH = os.path.abspath(os.path.dirname(__file__))
 DATA_UPLOADER_PATH_XLS = os.path.join(PRJ_PATH, "resources", "data_uploader.xls")
 DATA_UPLOADER_PATH_CSV = os.path.join(PRJ_PATH, "resources", "data_uploader.csv")
 DATABASE = os.path.join(PRJ_PATH, "resources", "database.db")
+DATABASE_SCHEMA = os.path.join(PRJ_PATH, "database", "database_schema.sql")
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # ICONS
