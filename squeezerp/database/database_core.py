@@ -8,28 +8,28 @@ from squeezerp.database import database_queries
 class Database(object):
     def __init__(self):
         self.db_name = resources.DATABASE
-        self.connection = sqlite3.connect(self.db_name)
+        self.db_conn = sqlite3.connect(self.db_name)
 
     def _execute_query(self, query, param=None):
-        _cursor = self.connection.cursor()
+        _cursor = self.db_conn.cursor()
         if param is None:
             try:
                 _cursor.execute(query)
-                self.connection.commit()
+                self.db_conn.commit()
             except sqlite3.Error as e:
-                self.connection.rollback()
+                self.db_conn.rollback()
                 print "An error occurred:", e.args[0]
         else:
             try:
                 _cursor.execute(query, param)
-                self.connection.commit()
+                self.db_conn.commit()
             except sqlite3.Error as e:
-                self.connection.rollback()
+                self.db_conn.rollback()
                 print "An error occurred:", e.args[0]
 
     def close(self):
-        if self.connection:
-            self.connection.close()
+        if self.db_conn:
+            self.db_conn.close()
 
 
 class DatabaseOperations(Database):
@@ -60,11 +60,18 @@ class DatabaseOperations(Database):
             db.sql("select * from table", " where field1 = '2'", " order by field1 desc")
             db.sql("select * from table" , where_option1, group_option2, order_option1)
         """
-
-        snippet = ''.join(snippets)
-        sql_query = query + snippet
+        if snippets:
+            snippet = ''.join(snippets)
+            sql_query = query + snippet
+        else:
+            sql_query = query
 
         self._execute_query(sql_query)
+
+    def sql_script(self, script_path):
+        """ Execute a sql_script (e.g. script.sql) """
+        script = open(script_path, 'r').read()
+        self.db_conn.executescript(script)
 
     def create_table(self, query):
         """" create a new table """
@@ -95,7 +102,7 @@ class DatabaseOperations(Database):
 
     def insert_category(self, c_id, c_name, c_description=None):
         """
-        Add new category to table Categories
+        Add new category to table "Categories"
 
         :param c_id: Categories.id
         :param c_name: Categories.name
@@ -107,7 +114,7 @@ class DatabaseOperations(Database):
 
     def insert_family(self, f_id, f_name, c_id, f_description=None):
         """
-        Add new family to table Families
+        Add new family to table "Families"
 
         :param f_id: Families.id
         :param f_name: Families.name
@@ -120,7 +127,7 @@ class DatabaseOperations(Database):
 
     def insert_vat(self, v_name, value, eq):
         """
-        Add new Value-added tax to table VAT
+        Add new Value-added tax to table "VAT"
 
         :param v_name: VAT.name
         :param value: VAT.value
@@ -132,7 +139,7 @@ class DatabaseOperations(Database):
 
     def insert_warehouse(self, w_name, w_description, w_location):
         """
-        Add new warehouse to table Warehouses
+        Add new warehouse to table "Warehouses"
 
         :param w_name: Warehouses.name
         :param w_description: Warehouses.description
