@@ -29,3 +29,5 @@ DATATOOLS_SELECT_INPUT_TYPE = "Select an input type."
 DATATOOLS_MESSAGE_ERROR = "DataUploader - Error"
 
 DATATOOLS_HISTORY_TITLE = "Squeezerp - DataTools - History"
+DATATOOLS_HISTORY_FILTER = "Period filter"
+DATATOOLS_HISTORY_VIEW = "View"
