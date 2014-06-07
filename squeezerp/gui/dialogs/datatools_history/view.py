@@ -2,13 +2,21 @@ from PyQt4 import QtCore
 from PyQt4.QtGui import QSizePolicy
 from PyQt4.QtGui import QMainWindow
 from PyQt4.QtGui import QIcon
+from PyQt4.QtGui import QComboBox
+from PyQt4.QtGui import QPushButton
+from PyQt4.QtGui import QTableWidget
+
 from PyQt4.QtGui import QWidget
+from PyQt4.QtGui import QGroupBox
+from PyQt4.QtGui import QAction
+from PyQt4.QtGui import QApplication
+
 
 from squeezerp import resources
+from squeezerp.modules.charts.SqueezerpCharts import PlotWidget
 from squeezerp.gui import ui_strings
 
 import sys
-from PyQt4.QtGui import QApplication
 
 
 class ViewDataToolsHistory(QMainWindow):
@@ -19,8 +27,8 @@ class ViewDataToolsHistory(QMainWindow):
         # DATATOOLS HISTORY WINDOWS:
         # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         self.setWindowTitle(ui_strings.DATATOOLS_HISTORY_TITLE)
-        self._width = 500
-        self._height = 300
+        self._width = 700
+        self._height = 370
         self._left_margin = 10
         self.resize(self._width, self._height)
         size_policy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
@@ -35,7 +43,42 @@ class ViewDataToolsHistory(QMainWindow):
         # central widget
         self.central_widget = QWidget(self)
 
-        # options - export
+        # toolbar
+        # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        # add toolbar options
+        self.export_action = QAction(QIcon(resources.ICON_EXPORT), 'Export', self)
+        self.export_action.setShortcut('Ctrl+Q')
+
+        self.print_action = QAction(QIcon(resources.ICON_PRINT), 'Print', self)
+        self.print_action.setShortcut('Ctrl+P')
+
+        self.toolbar = self.addToolBar('Options')
+        self.toolbar.addAction(self.export_action)
+        self.toolbar.addAction(self.print_action)
+        # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+        # group input files
+        self.group_period = QGroupBox(self.central_widget)
+        self.group_period.setGeometry(QtCore.QRect(self._left_margin, 10, 680, 50))
+        self.group_period.setTitle(ui_strings.DATATOOLS_HISTORY_FILTER)
+
+        # combobox periods
+        self.cbo_sheet = QComboBox(self.group_period)
+        self.cbo_sheet.setGeometry(QtCore.QRect(self._left_margin, 20, 130, 20))
+
+        # push button to update table
+        self.btn_view = QPushButton(self.group_period)
+        self.btn_view.setGeometry(QtCore.QRect(160, 20, 50, 20))
+        self.btn_view.setText(ui_strings.DATATOOLS_HISTORY_VIEW)
+
+        # table history
+        self.tbl_errors = QTableWidget(self.central_widget)
+        self.tbl_errors.setGeometry(QtCore.QRect(self._left_margin, 70, 680, 120))
+
+        # chart
+        self.plot_widget = PlotWidget(self.central_widget)
+        self.plot_widget.setGeometry(QtCore.QRect(self._left_margin, 200, 680, 120))
+        self.setCentralWidget(self.central_widget)
 
 
 if __name__ == "__main__":
