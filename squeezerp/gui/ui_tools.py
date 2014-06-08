@@ -20,7 +20,6 @@ class WorkerThread(QThread):
     def run(self):
         time.sleep(3)
 
-
 def load_data(table, headers, data):
         _columns = len(headers)
         table.setColumnCount(_columns)

@@ -13,7 +13,7 @@ from PyQt4.QtGui import QApplication
 
 
 from squeezerp import resources
-from squeezerp.modules.charts.SqueezerpCharts import PlotWidget
+from squeezerp.modules.charts import PlotWidget
 from squeezerp.gui import ui_strings
 
 import sys
@@ -28,7 +28,7 @@ class ViewDataToolsHistory(QMainWindow):
         # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         self.setWindowTitle(ui_strings.DATATOOLS_HISTORY_TITLE)
         self._width = 700
-        self._height = 370
+        self._height = 380
         self._left_margin = 10
         self.resize(self._width, self._height)
         size_policy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
@@ -46,10 +46,10 @@ class ViewDataToolsHistory(QMainWindow):
         # toolbar
         # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         # add toolbar options
-        self.export_action = QAction(QIcon(resources.ICON_EXPORT), 'Export', self)
-        self.export_action.setShortcut('Ctrl+Q')
+        self.export_action = QAction(QIcon(resources.ICON_EXPORT), 'Export (Ctrl+E)', self)
+        self.export_action.setShortcut('Ctrl+E')
 
-        self.print_action = QAction(QIcon(resources.ICON_PRINT), 'Print', self)
+        self.print_action = QAction(QIcon(resources.ICON_PRINT), 'Print (Ctrl+P)', self)
         self.print_action.setShortcut('Ctrl+P')
 
         self.toolbar = self.addToolBar('Options')
@@ -59,8 +59,12 @@ class ViewDataToolsHistory(QMainWindow):
 
         # group input files
         self.group_period = QGroupBox(self.central_widget)
-        self.group_period.setGeometry(QtCore.QRect(self._left_margin, 10, 680, 50))
+        self.group_period.setGeometry(QtCore.QRect(self._left_margin, 10, 250, 50))
         self.group_period.setTitle(ui_strings.DATATOOLS_HISTORY_FILTER)
+
+        self.group_group_by = QGroupBox(self.central_widget)
+        self.group_group_by.setGeometry(QtCore.QRect(270, 10, 420, 50))
+        self.group_group_by.setTitle(ui_strings.DATATOOLS_HISTORY_GROUP)
 
         # combobox periods
         self.cbo_sheet = QComboBox(self.group_period)
@@ -78,6 +82,7 @@ class ViewDataToolsHistory(QMainWindow):
         # chart
         self.plot_widget = PlotWidget(self.central_widget)
         self.plot_widget.setGeometry(QtCore.QRect(self._left_margin, 200, 680, 120))
+
         self.setCentralWidget(self.central_widget)
 
 
