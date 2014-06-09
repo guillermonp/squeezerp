@@ -16,7 +16,7 @@ from PyQt4.QtGui import QFileDialog
 from squeezerp import resources
 from squeezerp.core import tools
 from squeezerp.database.database_core import DatabaseOperations
-from squeezerp.gui import ui_styles, ui_tools, ui_strings
+from squeezerp.gui import ui_tools, ui_strings
 from squeezerp.gui.datatools import app_data
 from squeezerp.gui.datatools.controller import ControllerDataTools
 
@@ -25,31 +25,26 @@ class ModelDataTools(ControllerDataTools):
     def __init__(self):
         ControllerDataTools.__init__(self)
 
-        # -- global variables
+        # variables
         self._path = None
         self._headers = None
         self._sheet = None
         self._stop = None
         self._type = None
 
-        # -- DataUploader variables
+        # DataUploader variables
         self._data = None
         self._workbook = None
         self._stop_trigger = None
 
-        # -- DataUploader - DataTesting variables
+        # DataUploader - DataTesting variables
         self._errors = None
         self._has_errors = None
         self.uploaded_errors = None
         self._status = None
 
-        self.add_combobox_values()
-
-    def add_combobox_values(self):
-        """ Import available sheets to be uploaded """
-        _sheets = sorted(app_data.SHEETS.keys())
-        for sheet in _sheets:
-            self.cbo_sheet.addItem(sheet)
+        # add combobox values
+        ui_tools.load_combobox(self.cbo_sheet, app_data.SHEETS.keys())
 
     def csv_headers(self):
         self._headers = True
@@ -64,11 +59,9 @@ class ModelDataTools(ControllerDataTools):
 
     def run_error(self):
         self._stop = True
-        #self.chk_filter_errors.setEnabled(False)
 
     def run_all(self):
         self._stop = False
-        #self.chk_filter_errors.setEnabled(True)
 
     def update_progress(self, value, total):
         self.progress_bar.setValue(float(value) / total * 100)
@@ -127,22 +120,20 @@ class ModelDataTools(ControllerDataTools):
         # start thread
         self.worker_thread.start()
 
-        # inputs
+        # initialize
         self._sheet = str(self.cbo_sheet.currentText())
         self._data = None
         self._workbook = None
         self._errors = 0
         self._has_errors = 0
         self._stop_trigger = 0
-        self.tbl_errors.setStyleSheet("")
+        self._status = 0
         self.uploaded_errors = UploadErrors()
 
-        # state
         self.clean_textbox(self.txt_records, self.txt_errors, self.txt_time)
         self.show_state(label=self.lbl_state_du, state="pause")
         self.progress_bar.setValue(0)
         self.state_button(False, self.btn_data_testing, self.btn_data_db)
-        self._status = 0
 
         # tables
         ui_tools.remove_headers(self.tbl_errors)
@@ -155,7 +146,7 @@ class ModelDataTools(ControllerDataTools):
         # path
         if self.txt_file.text() == "":
             self.show_error_message("file_error")
-            return 1
+            return
         else:
             path, f_extension = os.path.splitext(str(self.txt_file.text()))
             self._path = str(self.txt_file.text())
@@ -163,7 +154,7 @@ class ModelDataTools(ControllerDataTools):
             if not ((self.btn_csv.isChecked() and f_extension == ".csv") or (
                     self.btn_xls.isChecked() and f_extension == ".xls")):
                 self.show_error_message("file_error")
-                return 1
+                return
 
         if self._stop is not None:
             if self._type == "csv":
@@ -176,20 +167,18 @@ class ModelDataTools(ControllerDataTools):
                 data = self.import_excel()
             else:
                 self.show_error_message("input_error")
-                return 1
+                return
         else:
             self.show_error_message("run_error")
-            return 1
+            return
 
         finish = datetime.datetime.now()
 
         # results:
         if self.error == 1:  # errors
-            self.tbl_errors.setStyleSheet(ui_styles.DATATOOLS_ERROR_TABLE)
             self.show_state(label=self.lbl_state_du, state="error")
             ui_tools.load_data(self.tbl_errors, app_data.HEADER_ERROR, self.uploaded_errors.table)
         else:
-            self.tbl_errors.setStyleSheet(ui_styles.DATATOOLS_PASS_TABLE)
             self.show_state(label=self.lbl_state_du, state="pass")
             # enable Data Testing
             self.state_button(True, self.btn_data_testing)
@@ -200,10 +189,10 @@ class ModelDataTools(ControllerDataTools):
         elapsed_time = finish - start
         self.txt_time.setText(str(round(divmod(elapsed_time.total_seconds(), 3600)[1], 3)))
 
-        # new entry in DataUploaderHistory
+        # add report to DataUploaderHistory table
         self.add_history(start, finish)
 
-        # print results
+        # load table with records
         if data is not None and self._type == "csv":
             ui_tools.load_data_csv(self.tbl_uploaded_data, app_data.TABLE_HEADERS[self._sheet], data)
         elif data is not None and self._type == "xls":
@@ -249,14 +238,12 @@ class ModelDataTools(ControllerDataTools):
         except (KeyError, IndexError):
             self._errors = 1
             self._status = 1
-            self.uploaded_errors.add_error("error", "", "", app_data.ERROR_READ_CSV_MSG, "",
-                                           app_data.ERROR_READ_CSV_CORRECT)
+            self.uploaded_errors.add_error(msg=app_data.ERROR_READ_CSV_MSG, err_correct=app_data.ERROR_READ_CSV_CORRECT)
 
         # convert to list
         data = self._data.values()
-        check = self._check_data_types_csv(data=data)
 
-        if self._errors > 0 or check == 1:
+        if self._errors > 0 or self._check_data_types_csv(data) == 1:
             self._has_errors = 1
         else:
             return data
@@ -279,7 +266,7 @@ class ModelDataTools(ControllerDataTools):
                     for pos, cell in enumerate(_col):
                         if bool(cell.strip()) is False:
                             if self._error_format_csv(col, pos, cell, 1) == 1:
-                                return 1
+                                return
 
                 if 2 == column_types[col]:
                     # import_csv, imports data as strings.
@@ -287,14 +274,14 @@ class ModelDataTools(ControllerDataTools):
                     for pos, cell in enumerate(_col):
                         if tools.isint(cell) is False:
                             if self._error_format_csv(col, pos, cell, 2) == 1:
-                                return 1
+                                return
 
                 if 3 == column_types[col]:
                     # check if we can convert to numeric: Real not null
                     for pos, cell in enumerate(_col):
                         if tools.isfloat(cell) is False:
                             if self._error_format_csv(col, pos, cell, 3) == 1:
-                                return 1
+                                return
 
                 if 4 == column_types[col]:
                     # check different date formats
@@ -302,7 +289,7 @@ class ModelDataTools(ControllerDataTools):
                     for pos, cell in enumerate(_col):
                         if tools.isdate(cell) is False:
                             if self._error_format_csv(col, pos, cell, 4) == 1:
-                                return 1
+                                return
 
                 if 5 == column_types[col]:
                     # Text | null
@@ -310,45 +297,44 @@ class ModelDataTools(ControllerDataTools):
                         if bool(cell.strip()) is True and \
                                 (tools.isdate(cell) or tools.isint(cell) or tools.isfloat(cell)):
                             if self._error_format_csv(col, pos, cell, 5) == 1:
-                                return 1
+                                return
 
                 if 6 == column_types[col]:
                     # Integer | null
                     for pos, cell in enumerate(_col):
                         if tools.isint(cell) is False or bool(cell.strip()) is False:
                             if self._error_format_csv(col, pos, cell, 6) == 1:
-                                return 1
+                                return
 
                 if 7 == column_types[col]:
                     # Real | null
                     for pos, cell in enumerate(_col):
                         if tools.isfloat(cell) is False or bool(cell.strip()) is False:
                             if self._error_format_csv(col, pos, cell, 7) == 1:
-                                return 1
+                                return
 
                 if 8 == column_types[col]:
                     # Date | null
                     for pos, cell in enumerate(_col):
                         if tools.isdate(cell) is False or bool(cell.strip()) is False:
                             if self._error_format_csv(col, pos, cell, 8) == 1:
-                                return 1
+                                return
         else:
             self._errors += 1
             self._status = 2
-            self.uploaded_errors.add_error("error", "", "",
-                                           app_data.ERROR_COLUMNS_MSG.format(num_cols, sheet, app_data.SHEETS[sheet]),
-                                           "", "")
-            return 1
+            self.uploaded_errors.add_error(msg=app_data.ERROR_COLUMNS_MSG.format(num_cols, sheet,
+                                                                                 app_data.SHEETS[sheet]))
+            return
 
     def _error_format_csv(self, col, pos, cell, cell_format):
         cell_format = app_data.DB_TYPES[cell_format]
         self._status = 3
-        self.uploaded_errors.add_error("error", pos + 1, col + 1, app_data.ERROR_VAL_MSG,
-                                       app_data.ERROR_VAL_VALUE.format(cell),
-                                       app_data.ERROR_VAL_CORRECT.format(cell_format))
+        self.uploaded_errors.add_error(rw=pos + 1, cl=col + 1, msg=app_data.ERROR_VAL_MSG,
+                                       err_value=app_data.ERROR_VAL_VALUE.format(cell),
+                                       err_correct=app_data.ERROR_VAL_CORRECT.format(cell_format))
         self._errors += 1
         if self._stop is True:
-            return 1
+            return
 
     def import_excel(self):
         """
@@ -387,9 +373,8 @@ class ModelDataTools(ControllerDataTools):
                 else:
                     self._has_errors = 1
             else:
-                self.uploaded_errors.add_error("error", "", "",
-                                               app_data.ERROR_COLUMNS_MSG.format(cols, sheet, app_data.SHEETS[sheet]),
-                                               "", "")
+                self.uploaded_errors.add_error(msg=app_data.ERROR_COLUMNS_MSG.format(cols, sheet,
+                                                                                     app_data.SHEETS[sheet]))
                 self._status = 2
                 self.progress_bar.setValue(100)
                 self._errors = 1
@@ -419,9 +404,9 @@ class ModelDataTools(ControllerDataTools):
 
     def _error_format_xls(self, pos, col, ws, db_type):
         self._status = 3
-        self.uploaded_errors.add_error("error", pos + 1, col + 1, app_data.ERROR_VAL_MSG,
-                                       app_data.ERROR_VAL_VALUE.format(ws.cell(pos, col).value),
-                                       app_data.ERROR_VAL_CORRECT.format(app_data.DB_TYPES[db_type]))
+        self.uploaded_errors.add_error(rw=pos + 1, cl=col + 1, msg=app_data.ERROR_VAL_MSG,
+                                       err_value=app_data.ERROR_VAL_VALUE.format(ws.cell(pos, col).value),
+                                       err_correct=app_data.ERROR_VAL_CORRECT.format(app_data.DB_TYPES[db_type]))
         self._errors += 1
         if self._stop is True:
             self._stop_trigger = 1
@@ -462,9 +447,10 @@ class ModelDataTools(ControllerDataTools):
 
 class UploadErrors:
     def __init__(self):
+        """ new error report to DataUploaderHistory table"""
         self.errors = []
 
-    def add_error(self, err_type, rw, cl, msg, err_value, err_correct):
+    def add_error(self, err_type="error", rw=None, cl=None, msg=None, err_value=None, err_correct=None):
         _type = err_type
         _row = str(rw)
         _column = str(cl)
