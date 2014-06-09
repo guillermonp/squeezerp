@@ -63,7 +63,7 @@ CREATE TABLE DataUploaderHistory(
     errors INTEGER NOT NULL,
     status INTEGER NOT NULL,
     start TEXT NOT NULL,
-    end TEXT NOT NULL
+    finish TEXT NOT NULL
 );
 
 -- table "DataUploaderHistoryStatus": success and errors
