@@ -117,7 +117,7 @@ insert_warehouse = 'INSERT INTO Warehouses (name, description, location) VALUES 
 insert_datauploader = """
                     INSERT INTO DataUploaderHistory
                     (sheet_name, file_name, file_size, file_format, has_error, records_found, errors, status,
-                    start, end) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    start, finish) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                     """
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -144,11 +144,39 @@ select_datauploader_history = """
                         ON du.file_format = duf.id
                     """
 
+select_datauploader_history_max_error_sheet = """
+                    SELECT
+                        du.sheet_name,
+                        MAX(du.errors) AS [# errors]
+                    FROM DataUploaderHistory du
+                    GROUP BY sheet_name
+                    ORDER BY [# errors] DESC LIMIT 1
+                    """
+
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # READ - SNIPPETS
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+# DataUploaderHistory
 snippet_du_history_period_today = " WHERE date(du.start) = BETWEEN date('now')"
 snippet_du_history_period_1week = " WHERE date(du.start) = BETWEEN date('now') AND date('now', '-7 day')"
 snippet_du_history_period_1month = " WHERE date(du.start) = BETWEEN date('now') AND date('now', '-1 month')"
 snippet_du_history_period_3month = " WHERE date(du.start) = BETWEEN date('now') AND date('now', '-3 month')"
+
+
+# general
+select_all = "SELECT * FROM {}"
+snippet_limit = " LIMIT {}"
+
+
+
+
+
+
+
+
+
+
+
+
+

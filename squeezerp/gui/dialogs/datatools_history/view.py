@@ -80,8 +80,8 @@ class ViewDataToolsHistory(QMainWindow):
         self.tbl_errors.setGeometry(QtCore.QRect(self._left_margin, 70, 680, 120))
 
         # chart
-        self.plot_widget = PlotWidget(self.central_widget)
-        self.plot_widget.setGeometry(QtCore.QRect(self._left_margin, 200, 680, 120))
+        self.plot_widget = PlotWidget(self.central_widget, 8, 2)
+        self.plot_widget.setGeometry(QtCore.QRect(self._left_margin, 200, 680, 130))
 
         self.setCentralWidget(self.central_widget)
 

@@ -27,7 +27,7 @@ DB_TYPES = {
 
 FIELDS_TYPES = {
     "Categories": {0: 2, 1: 1, 2: 5},
-    "Families": {0: 2, 1: 1, 2: 1, 3: 5},
+    "Families": {0: 2, 1: 1, 2: 2, 3: 5},
     "VAT": {0: 1, 1: 3, 2: 3},
     "PaymentMethods": {0: 1},
     "Warehouses": {0: 1, 1: 5, 2: 5}}

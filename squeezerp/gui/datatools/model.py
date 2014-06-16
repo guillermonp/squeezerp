@@ -266,7 +266,7 @@ class ModelDataTools(ControllerDataTools):
                     for pos, cell in enumerate(_col):
                         if bool(cell.strip()) is False:
                             if self._error_format_csv(col, pos, cell, 1) == 1:
-                                return
+                                return 1
 
                 if 2 == column_types[col]:
                     # import_csv, imports data as strings.
@@ -274,14 +274,14 @@ class ModelDataTools(ControllerDataTools):
                     for pos, cell in enumerate(_col):
                         if tools.isint(cell) is False:
                             if self._error_format_csv(col, pos, cell, 2) == 1:
-                                return
+                                return 1
 
                 if 3 == column_types[col]:
                     # check if we can convert to numeric: Real not null
                     for pos, cell in enumerate(_col):
                         if tools.isfloat(cell) is False:
                             if self._error_format_csv(col, pos, cell, 3) == 1:
-                                return
+                                return 1
 
                 if 4 == column_types[col]:
                     # check different date formats
@@ -289,7 +289,7 @@ class ModelDataTools(ControllerDataTools):
                     for pos, cell in enumerate(_col):
                         if tools.isdate(cell) is False:
                             if self._error_format_csv(col, pos, cell, 4) == 1:
-                                return
+                                return 1
 
                 if 5 == column_types[col]:
                     # Text | null
@@ -297,28 +297,28 @@ class ModelDataTools(ControllerDataTools):
                         if bool(cell.strip()) is True and \
                                 (tools.isdate(cell) or tools.isint(cell) or tools.isfloat(cell)):
                             if self._error_format_csv(col, pos, cell, 5) == 1:
-                                return
+                                return 1
 
                 if 6 == column_types[col]:
                     # Integer | null
                     for pos, cell in enumerate(_col):
                         if tools.isint(cell) is False or bool(cell.strip()) is False:
                             if self._error_format_csv(col, pos, cell, 6) == 1:
-                                return
+                                return 1
 
                 if 7 == column_types[col]:
                     # Real | null
                     for pos, cell in enumerate(_col):
                         if tools.isfloat(cell) is False or bool(cell.strip()) is False:
                             if self._error_format_csv(col, pos, cell, 7) == 1:
-                                return
+                                return 1
 
                 if 8 == column_types[col]:
                     # Date | null
                     for pos, cell in enumerate(_col):
                         if tools.isdate(cell) is False or bool(cell.strip()) is False:
                             if self._error_format_csv(col, pos, cell, 8) == 1:
-                                return
+                                return 1
         else:
             self._errors += 1
             self._status = 2
@@ -334,7 +334,7 @@ class ModelDataTools(ControllerDataTools):
                                        err_correct=app_data.ERROR_VAL_CORRECT.format(cell_format))
         self._errors += 1
         if self._stop is True:
-            return
+            return 1
 
     def import_excel(self):
         """

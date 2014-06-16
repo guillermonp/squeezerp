@@ -20,6 +20,7 @@ class WorkerThread(QThread):
     def run(self):
         time.sleep(3)
 
+
 def load_data(table, headers, data):
         _columns = len(headers)
         table.setColumnCount(_columns)
@@ -82,3 +83,11 @@ def load_table_options(table, headers):
     table.horizontalHeader().setStretchLastSection(True)
     table.setSelectionBehavior(QAbstractItemView.SelectRows)
     table.setSortingEnabled(False)
+
+
+def load_combobox(combobox, options):
+    """ load combobox options - ordered ascending """
+    sheets = sorted(options)
+
+    for sheet in sheets:
+        combobox.addItem(sheet)

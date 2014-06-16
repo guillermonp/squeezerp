@@ -9,6 +9,7 @@ class Database(object):
     def __init__(self):
         self.db_name = resources.DATABASE
         self.db_conn = sqlite3.connect(self.db_name)
+        self.db_query = None
 
     def _execute_query(self, query, param=None):
         _cursor = self.db_conn.cursor()
@@ -79,7 +80,7 @@ class DatabaseOperations(Database):
 
     def create_table(self, query):
         """" create a new table """
-        return self._execute_query(query)
+        self._execute_query(query)
 
     def create_all_tables(self, tables):
         """
@@ -152,3 +153,20 @@ class DatabaseOperations(Database):
         fields = (w_name, w_description, w_location)
         query = database_queries.insert_warehouse
         self._execute_query(query=query, param=fields)
+
+    def execute_query_results(self, query, *snippets):
+        self.db_query = self.db_conn.cursor().execute(query)
+        return self.db_query
+
+    @classmethod
+    def fetch_query_results(cls, sql_result):
+        """
+
+        :return: query results matrix, table headers
+        """
+        try:
+            data = sql_result.fetchall()
+            headers = [field[0] for field in sql_result.description]
+            return headers, data
+        except sqlite3.Error as e:
+            print "no results from the query:", e.args[0]

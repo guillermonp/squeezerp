@@ -62,7 +62,7 @@ CREATE TABLE DataUploaderHistory(
     records_found INTEGER NOT NULL,
     errors INTEGER NOT NULL,
     status INTEGER NOT NULL,
-    start TEXT NOT NULL,
+    init TEXT NOT NULL,
     finish TEXT NOT NULL
 );
 
