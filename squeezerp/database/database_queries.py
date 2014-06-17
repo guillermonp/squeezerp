@@ -153,6 +153,25 @@ select_datauploader_history_max_error_sheet = """
                     ORDER BY [# errors] DESC LIMIT 1
                     """
 
+select_datauploader_history_errors = """
+                    SELECT
+                        date(du.start) AS [Day],
+                        SUM(has_error) AS [Uploads with errors]
+                    FROM DataUploaderHistory du
+                    GROUP BY [Day]
+                    ORDER BY [Day] ASC
+                    """
+
+select_datauploader_history_status = """
+                    SELECT
+                        DISTINCT
+                        date(du.start) AS [Day],
+                        dus.status_msg AS [Status]
+                    FROM DataUploaderHistory du
+                        INNER JOIN DataUploaderHistoryStatus dus
+                        ON du.status = dus.id
+                    ORDER BY [Day] ASC
+                    """
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # READ - SNIPPETS
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -167,16 +186,3 @@ snippet_du_history_period_3month = " WHERE date(du.start) = BETWEEN date('now') 
 # general
 select_all = "SELECT * FROM {}"
 snippet_limit = " LIMIT {}"
-
-
-
-
-
-
-
-
-
-
-
-
-
