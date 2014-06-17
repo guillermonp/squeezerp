@@ -3,8 +3,9 @@ from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as Canvas
 from matplotlib.backends.backend_qt4agg import NavigationToolbar2QTAgg as NavigationToolbar
 from squeezerp.modules.chart_options import chart_colors
 
+
 class PlotWidget(Canvas):
-    def __init__(self, parent, x_dimension, y_dimension):
+    def __init__(self, parent, x_dimension, y_dimension, x_label=None, y_label=None):
         super(PlotWidget, self).__init__(Figure())
 
         self.setParent(parent)
@@ -20,13 +21,15 @@ class PlotWidget(Canvas):
         # background color = white
         self.figure.set_facecolor('white')
 
-        self.plot_properties()
+        self.plot_properties(x_label, y_label)
         self.plot_style()
 
-    def plot_properties(self):
+    def plot_properties(self, x_label, y_label):
 
-        self.axes.set_ylabel('test')
-        self.axes.set_xlabel('test')
+        if x_label and y_label is not None:
+            self.axes.set_xlabel(x_label)
+            self.axes.set_ylabel(y_label)
+
         self.figure.tight_layout()
 
     def plot_style(self):
@@ -48,3 +51,6 @@ class PlotWidget(Canvas):
 
         # add grid - soft grey
         self.axes.grid(True)
+
+    def plot(self):
+        pass
