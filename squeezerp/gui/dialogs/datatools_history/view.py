@@ -5,6 +5,7 @@ from PyQt4.QtGui import QIcon
 from PyQt4.QtGui import QComboBox
 from PyQt4.QtGui import QPushButton
 from PyQt4.QtGui import QTableWidget
+from PyQt4.QtGui import QRadioButton
 
 from PyQt4.QtGui import QWidget
 from PyQt4.QtGui import QGroupBox
@@ -62,9 +63,22 @@ class ViewDataToolsHistory(QMainWindow):
         self.group_period.setGeometry(QtCore.QRect(self._left_margin, 10, 250, 50))
         self.group_period.setTitle(ui_strings.DATATOOLS_HISTORY_FILTER)
 
+        # group by:
         self.group_group_by = QGroupBox(self.central_widget)
         self.group_group_by.setGeometry(QtCore.QRect(270, 10, 420, 50))
         self.group_group_by.setTitle(ui_strings.DATATOOLS_HISTORY_GROUP)
+
+        # group by: errors
+        self.group_by_errors = QRadioButton(ui_strings.DATATOOLS_HISTORY_GROUP_ERROR, self.group_group_by)
+        self.group_by_errors.setGeometry(QtCore.QRect(10, 10, 80, 50))
+
+        # group by: status
+        self.group_by_status = QRadioButton(ui_strings.DATATOOLS_HISTORY_GROUP_STATUS, self.group_group_by)
+        self.group_by_status.setGeometry(QtCore.QRect(100, 10, 80, 50))
+
+        # group by: no group
+        self.group_by_no = QRadioButton(ui_strings.DATATOOLS_HISTORY_GROUP_NO, self.group_group_by)
+        self.group_by_no.setGeometry(QtCore.QRect(190, 10, 80, 50))
 
         # combobox periods
         self.cbo_sheet = QComboBox(self.group_period)
