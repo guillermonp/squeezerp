@@ -85,3 +85,19 @@ CREATE TABLE ItemTypes(
     id INTEGER PRIMARY KEY NOT NULL,
     name TEXT NOT NULL
 );
+
+-- insert initial values:
+INSERT INTO ItemTypes
+    SELECT 1 AS 'id', 'Items' AS 'name'
+UNION SELECT 2, 'Services'
+UNION SELECT 3, 'Labor';
+
+INSERT INTO DataUploaderHistoryStatus
+    SELECT 0 AS 'id', 'successfully uploaded' AS 'status_msg'
+UNION SELECT 1, 'error reading csv file'
+UNION SELECT 2, 'number of columns for uploaded sheet is incorrect'
+UNION SELECT 3, 'there are records with errors';
+
+INSERT INTO DataUploaderHistoryFormats
+    SELECT 0 AS 'id', 'csv' AS 'input_format'
+UNION SELECT 1, 'xls';
