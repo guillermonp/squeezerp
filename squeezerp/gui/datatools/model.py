@@ -324,7 +324,7 @@ class ModelDataTools(ControllerDataTools):
             self._status = 2
             self.uploaded_errors.add_error(msg=app_data.ERROR_COLUMNS_MSG.format(num_cols, sheet,
                                                                                  app_data.SHEETS[sheet]))
-            return
+            return 1
 
     def _error_format_csv(self, col, pos, cell, cell_format):
         cell_format = app_data.DB_TYPES[cell_format]
@@ -445,7 +445,7 @@ class ModelDataTools(ControllerDataTools):
         DatabaseOperations().insert_history_uploader(fields)
 
 
-class UploadErrors:
+class UploadErrors(object):
     def __init__(self):
         """ new error report to DataUploaderHistory table"""
         self.errors = []
