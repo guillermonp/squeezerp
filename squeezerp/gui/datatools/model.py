@@ -429,19 +429,19 @@ class ModelDataTools(ControllerDataTools):
             return self._data.shape
 
     def add_history(self, start, end):
-        _sheet_name = self._sheet
-        _file_name = self._path
-        _file_size = tools.get_file_size(_file_name)
-        _format = (0 if self._type == "csv" else 1)
-        _has_error = self._has_errors
-        _records = self.data_shape[0]
-        _errors = self._errors
-        _error_type = self._status
-        _start = tools.convert_date_db(str(start))
-        _end = tools.convert_date_db(str(end))
+        sheet_name = self._sheet
+        file_name = self._path
+        file_size = tools.get_file_size(file_name)
+        file_format = (0 if self._type == "csv" else 1)
+        has_error = self._has_errors
+        records = self.data_shape[0]
+        errors = self._errors
+        error_type = self._status
+        init = tools.convert_date_db(str(start))
+        finish = tools.convert_date_db(str(end))
 
         fields = (
-            _sheet_name, _file_name, _file_size, _format, _has_error, _records, _errors, _error_type, _start, _end)
+            sheet_name, file_name, file_size, file_format, has_error, records, errors, error_type, init, finish)
         DatabaseOperations().insert_history_uploader(fields)
 
 
