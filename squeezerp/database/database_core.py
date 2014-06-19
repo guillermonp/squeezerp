@@ -45,7 +45,7 @@ class DatabaseOperations(Database):
     def __init__(self):
         super(DatabaseOperations, self).__init__()
 
-    def sql(self, query, *snippets):
+    def sql(self, query, snippets):
         """
         Run custom queries:
             db = DatabaseOperations()
@@ -58,8 +58,8 @@ class DatabaseOperations(Database):
             " group by ..."
             " having ..."
 
-            db.sql("select * from table", " where field1 = '2'", " order by field1 desc")
-            db.sql("select * from table" , where_option1, group_option2, order_option1)
+            db.sql("select * from table", [" where field1 = '2'", " order by field1 desc"])
+            db.sql("select * from table" , [where_option1, group_option2, order_option1])
         """
         if snippets:
             snippet = ''.join(snippets)
@@ -68,6 +68,23 @@ class DatabaseOperations(Database):
             sql_query = query
 
         self._execute_query(sql_query)
+
+    def sql_fetch_data(self, query, snippets):
+
+        if snippets:
+            snippet = ''.join(snippets)
+            sql_query = query + snippet
+        else:
+            sql_query = query
+
+        sql_result = self.db_conn.cursor().execute(sql_query)
+
+        try:
+            data = sql_result.fetchall()
+            headers = [field[0] for field in sql_result.description]
+            return headers, data
+        except sqlite3.Error as e:
+            print "no results from the query:", e.args[0]
 
     def sql_script(self, script_path):
         """
@@ -153,20 +170,3 @@ class DatabaseOperations(Database):
         fields = (w_name, w_description, w_location)
         query = database_queries.insert_warehouse
         self._execute_query(query=query, param=fields)
-
-    def execute_query_results(self, query, *snippets):
-        self.db_query = self.db_conn.cursor().execute(query)
-        return self.db_query
-
-    @classmethod
-    def fetch_query_results(cls, sql_result):
-        """
-
-        :return: query results matrix, table headers
-        """
-        try:
-            data = sql_result.fetchall()
-            headers = [field[0] for field in sql_result.description]
-            return headers, data
-        except sqlite3.Error as e:
-            print "no results from the query:", e.args[0]
