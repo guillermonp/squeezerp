@@ -45,7 +45,7 @@ class DatabaseOperations(Database):
     def __init__(self):
         super(DatabaseOperations, self).__init__()
 
-    def sql(self, query, snippets):
+    def sql(self, query, snippets=None):
         """
         Run custom queries:
             db = DatabaseOperations()
@@ -69,7 +69,7 @@ class DatabaseOperations(Database):
 
         self._execute_query(sql_query)
 
-    def sql_fetch_data(self, query, snippets):
+    def sql_fetch_data(self, query, snippets=None):
 
         if snippets:
             snippet = ''.join(snippets)
@@ -83,7 +83,7 @@ class DatabaseOperations(Database):
             headers = [field[0] for field in sql_result.description]
             return headers, data
         except sqlite3.Error as e:
-            print "no results from the query:", e.args[0]
+            print "no results from the query: {} ".format(sql_query), e.args[0]
 
     def sql_script(self, script_path):
         """
