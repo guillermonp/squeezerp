@@ -65,37 +65,44 @@ class ViewDataToolsHistory(QMainWindow):
 
         # group by:
         self.group_group_by = QGroupBox(self.central_widget)
-        self.group_group_by.setGeometry(QtCore.QRect(270, 10, 420, 50))
+        self.group_group_by.setGeometry(QtCore.QRect(270, 10, 250, 50))
         self.group_group_by.setTitle(ui_strings.DATATOOLS_HISTORY_GROUP)
 
         # group by: errors
-        self.group_by_errors = QRadioButton(ui_strings.DATATOOLS_HISTORY_GROUP_ERROR, self.group_group_by)
-        self.group_by_errors.setGeometry(QtCore.QRect(10, 10, 80, 50))
+        self.rbtn_by_errors = QRadioButton(ui_strings.DATATOOLS_HISTORY_GROUP_ERROR, self.group_group_by)
+        self.rbtn_by_errors.setGeometry(QtCore.QRect(10, 10, 80, 50))
 
         # group by: status
-        self.group_by_status = QRadioButton(ui_strings.DATATOOLS_HISTORY_GROUP_STATUS, self.group_group_by)
-        self.group_by_status.setGeometry(QtCore.QRect(100, 10, 80, 50))
+        #self.group_by_status = QRadioButton(ui_strings.DATATOOLS_HISTORY_GROUP_STATUS, self.group_group_by)
+        #self.group_by_status.setGeometry(QtCore.QRect(100, 10, 80, 50))
 
         # group by: no group
-        self.group_by_no = QRadioButton(ui_strings.DATATOOLS_HISTORY_GROUP_NO, self.group_group_by)
-        self.group_by_no.setGeometry(QtCore.QRect(190, 10, 80, 50))
-
-        # combobox periods
-        self.cbo_sheet = QComboBox(self.group_period)
-        self.cbo_sheet.setGeometry(QtCore.QRect(self._left_margin, 20, 130, 20))
+        #self.group_by_no = QRadioButton(ui_strings.DATATOOLS_HISTORY_GROUP_NO, self.group_group_by)
+        #self.group_by_no.setGeometry(QtCore.QRect(190, 10, 80, 50))
 
         # push button to update table
-        self.btn_view = QPushButton(self.group_period)
-        self.btn_view.setGeometry(QtCore.QRect(160, 20, 50, 20))
-        self.btn_view.setText(ui_strings.DATATOOLS_HISTORY_VIEW)
+        #self.btn_view_group = QPushButton(self.group_group_by)
+        #self.btn_view_group.setGeometry(QtCore.QRect(160, 20, 50, 20))
+        #self.btn_view_group.setText(ui_strings.DATATOOLS_HISTORY_VIEW)
+
+        # combobox periods
+        self.cbo_period = QComboBox(self.group_period)
+        self.cbo_period.setGeometry(QtCore.QRect(self._left_margin, 20, 130, 20))
+
+        # push button to update table
+        #self.btn_view = QPushButton(self.group_period)
+        #self.btn_view.setGeometry(QtCore.QRect(160, 20, 50, 20))
+        #self.btn_view.setText(ui_strings.DATATOOLS_HISTORY_VIEW)
 
         # table history
-        self.tbl_errors = QTableWidget(self.central_widget)
-        self.tbl_errors.setGeometry(QtCore.QRect(self._left_margin, 70, 680, 120))
+        self.tbl_uploads = QTableWidget(self.central_widget)
+        self.tbl_uploads.setGeometry(QtCore.QRect(self._left_margin, 70, 680, 120))
 
         # chart
         self.plot_widget = PlotWidget(self.central_widget, 8, 2)
         self.plot_widget.setGeometry(QtCore.QRect(self._left_margin, 200, 680, 130))
+
+        # records - "x records found"
 
         self.setCentralWidget(self.central_widget)
 
