@@ -15,11 +15,11 @@ class ModelDataToolsHistory(ControllerDataToolsHistory):
 
         # DataUploaderHistory variables
         self.db = db_core.DatabaseOperations()
-        self.query = db_q.select_datauploader_history
+        self.query = None
+        self.snippet = None
 
         # initialize with period = 1 week
         self.period = 1
-        self.snippet = db_q.snippet_du_history_period_1week
 
         # add combobox periods - set combobox = 1 week
         ui_tools.load_combobox(self.cbo_period, app_data.PERIODS.values())
@@ -34,10 +34,13 @@ class ModelDataToolsHistory(ControllerDataToolsHistory):
         period_name = str(self.cbo_period.currentText())
         self.period = [k for k, v in app_data.PERIODS.iteritems() if v == period_name][0]
 
+        self.query = db_q.select_datauploader_history
         self.period_filter()
         headers, data = self.db.sql_fetch_data(self.query, self.snippet)
-
         ui_tools.view_table(self.tbl_uploads, headers, data)
+
+        if self.rbtn_by_errors.isChecked():
+            self.rbtn_by_errors.setChecked(False)
 
     def view_group(self):
         """
@@ -46,7 +49,13 @@ class ModelDataToolsHistory(ControllerDataToolsHistory):
             day - status: Uploading status type per day.
             no group: show all data.
         """
-        pass
+        if self.rbtn_by_errors.isChecked():
+            self.query = db_q.select_datauploader_history_errors
+        else:
+            print "select a group"
+
+        headers, data = self.db.sql_fetch_data(self.query)
+        ui_tools.view_table(self.tbl_uploads, headers, data)
 
     def period_filter(self):
         if self.period == 0:
