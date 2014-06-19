@@ -117,7 +117,7 @@ insert_warehouse = 'INSERT INTO Warehouses (name, description, location) VALUES 
 insert_datauploader = """
                     INSERT INTO DataUploaderHistory
                     (sheet_name, file_name, file_size, file_format, has_error, records_found, errors, status,
-                    start, finish) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    init, finish) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                     """
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -135,8 +135,8 @@ select_datauploader_history = """
                         du.records_found AS [records],
                         du.errors AS [#errors],
                         dus.status_msg AS [status],
-                        du.start,
-                        du.end
+                        du.init,
+                        du.finish
                     FROM DataUploaderHistory du
                         INNER JOIN DataUploaderHistoryStatus dus
                         ON du.status = dus.id
@@ -155,7 +155,8 @@ select_datauploader_history_max_error_sheet = """
 
 select_datauploader_history_errors = """
                     SELECT
-                        date(du.start) AS [Day],
+                        date(du.init) AS [Day],
+                        COUNT(*) AS [Uploads],
                         SUM(has_error) AS [Uploads with errors]
                     FROM DataUploaderHistory du
                     GROUP BY [Day]
@@ -165,7 +166,7 @@ select_datauploader_history_errors = """
 select_datauploader_history_status = """
                     SELECT
                         DISTINCT
-                        date(du.start) AS [Day],
+                        date(du.init) AS [Day],
                         dus.status_msg AS [Status]
                     FROM DataUploaderHistory du
                         INNER JOIN DataUploaderHistoryStatus dus
@@ -177,11 +178,12 @@ select_datauploader_history_status = """
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # DataUploaderHistory
-snippet_du_history_period_today = " WHERE date(du.start) = BETWEEN date('now')"
-snippet_du_history_period_1week = " WHERE date(du.start) = BETWEEN date('now') AND date('now', '-7 day')"
-snippet_du_history_period_1month = " WHERE date(du.start) = BETWEEN date('now') AND date('now', '-1 month')"
-snippet_du_history_period_3month = " WHERE date(du.start) = BETWEEN date('now') AND date('now', '-3 month')"
+snippet_du_history_period_today = " WHERE date(du.init) = date('now')"
+snippet_du_history_period_1week = " WHERE date(du.init) BETWEEN date('now', '-7 day') AND date('now')"
+snippet_du_history_period_1month = " WHERE date(du.init) BETWEEN date('now', '-1 month') AND date('now')"
+snippet_du_history_period_3month = " WHERE date(du.init) BETWEEN date('now', '-3 month') AND date('now')"
 
+snippet_du_history_order_asc = " ORDER BY du.id ASC"
 
 # general
 select_all = "SELECT * FROM {}"
