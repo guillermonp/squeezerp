@@ -177,7 +177,7 @@ class ModelDataTools(ControllerDataTools):
         # results:
         if self.error == 1:  # errors
             self.show_state(label=self.lbl_state_du, state="error")
-            ui_tools.load_data(self.tbl_errors, app_data.HEADER_ERROR, self.uploaded_errors.table)
+            ui_tools.load_datatools(self.tbl_errors, app_data.HEADER_ERROR, self.uploaded_errors.table)
         else:
             self.show_state(label=self.lbl_state_du, state="pass")
             # enable Data Testing
@@ -194,9 +194,9 @@ class ModelDataTools(ControllerDataTools):
 
         # load table with records
         if data is not None and self._type == "csv":
-            ui_tools.load_data_csv(self.tbl_uploaded_data, app_data.TABLE_HEADERS[self._sheet], data)
+            ui_tools.load_datatools_csv(self.tbl_uploaded_data, app_data.TABLE_HEADERS[self._sheet], data)
         elif data is not None and self._type == "xls":
-            ui_tools.load_data(self.tbl_uploaded_data, app_data.TABLE_HEADERS[self._sheet], data)
+            ui_tools.load_datatools(self.tbl_uploaded_data, app_data.TABLE_HEADERS[self._sheet], data)
 
     def import_csv(self, delimiter, hd_option=None):
         """
