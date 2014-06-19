@@ -77,9 +77,8 @@ class DatabaseOperations(Database):
         else:
             sql_query = query
 
-        sql_result = self.db_conn.cursor().execute(sql_query)
-
         try:
+            sql_result = self.db_conn.cursor().execute(sql_query)
             data = sql_result.fetchall()
             headers = [field[0] for field in sql_result.description]
             return headers, data
