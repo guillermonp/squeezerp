@@ -51,8 +51,8 @@ def load_datatools(table, headers, data):
 
 
 def load_datatools_csv(table, headers, data):
-    _columns = len(headers)
-    table.setColumnCount(_columns)
+    columns = len(headers)
+    table.setColumnCount(columns)
     remove_rows(table)
 
     for rw in range(len(data[0])):
@@ -90,13 +90,15 @@ def load_table_options(table, headers):
     table.horizontalHeader().setVisible(True)
     table.setHorizontalHeaderLabels(headers)
     table.horizontalHeader().setStretchLastSection(True)
+    table.verticalHeader().setVisible(False)
+
     table.setSelectionBehavior(QAbstractItemView.SelectRows)
     table.setSortingEnabled(False)
 
 
 def view_table(table, headers, data):
-    _columns = len(headers)
-    table.setColumnCount(_columns)
+    columns = len(headers)
+    table.setColumnCount(columns)
     remove_rows(table)
 
     for rw, row in enumerate(data):
