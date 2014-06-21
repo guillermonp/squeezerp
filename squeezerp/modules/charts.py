@@ -1,7 +1,8 @@
 from matplotlib.figure import Figure
+from matplotlib import rc
 from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as Canvas
 from matplotlib.backends.backend_qt4agg import NavigationToolbar2QTAgg as NavigationToolbar
-from squeezerp.modules.chart_options import chart_colors
+from squeezerp.modules.chart_options import chart_colors, chart_font
 
 
 class PlotWidget(Canvas):
@@ -37,17 +38,18 @@ class PlotWidget(Canvas):
         # change axes colors - grey
         axes = ["bottom", "top", "left", "right"]
         for ax in axes:
-            self.axes.spines[ax].set_color(chart_colors["grey"][0])
+            self.axes.spines[ax].set_color(chart_colors["grey"])
 
         # change x-label and y-label color
-        self.axes.xaxis.label.set_color(chart_colors["dark_grey"][0])
-        self.axes.yaxis.label.set_color(chart_colors["dark_grey"][0])
+        self.axes.xaxis.label.set_color(chart_colors["dark_grey"])
+        self.axes.yaxis.label.set_color(chart_colors["dark_grey"])
 
         # change tick color
-        self.axes.tick_params(axis='x', colors=chart_colors["grey"][0])
-        self.axes.tick_params(axis='y', colors=chart_colors["grey"][0])
+        self.axes.tick_params(axis='x', colors=chart_colors["grey"])
+        self.axes.tick_params(axis='y', colors=chart_colors["grey"])
 
-        # change font size
+        # change font size - labels
+        rc('font', **chart_font)
 
         # add grid - soft grey
         self.axes.grid(True)
