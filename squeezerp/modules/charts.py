@@ -87,7 +87,9 @@ class PlotWidget(Canvas):
         if not args:
             self.axes.plot(ind, y)
         else:
-            # multiple series
+            # multiple series - to be implemented
+            for arg in args:
+                print arg
             pass
 
         self.figure.tight_layout()
