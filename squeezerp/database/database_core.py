@@ -1,6 +1,8 @@
 """Database - CORE"""
 
 import sqlite3
+import numpy as np
+
 from squeezerp import resources
 from squeezerp.database import database_queries
 
@@ -44,6 +46,8 @@ class DatabaseOperations(Database):
     """
     def __init__(self):
         super(DatabaseOperations, self).__init__()
+        self.headers = None
+        self.data = None
 
     def sql(self, query, snippets=None):
         """
@@ -81,6 +85,8 @@ class DatabaseOperations(Database):
             sql_result = self.db_conn.cursor().execute(sql_query)
             data = sql_result.fetchall()
             headers = [field[0] for field in sql_result.description]
+            self.data = data
+            self.headers = headers
             return headers, data
         except sqlite3.Error as e:
             print "no results from the query: {} ".format(sql_query), e.args[0]
@@ -93,6 +99,10 @@ class DatabaseOperations(Database):
         """
         script = open(script_path, 'r').read()
         self.db_conn.executescript(script)
+
+    def sql_many(self, queries):
+        """ execute many sqlite"""
+        pass
 
     def create_table(self, query):
         """" create a new table """
@@ -169,3 +179,13 @@ class DatabaseOperations(Database):
         fields = (w_name, w_description, w_location)
         query = database_queries.insert_warehouse
         self._execute_query(query=query, param=fields)
+
+    @property
+    def show_header(self):
+        # numpy array
+        return np.asarray(self.headers)
+
+    @property
+    def show_data(self):
+        # numpy array
+        return np.asarray(self.data)
